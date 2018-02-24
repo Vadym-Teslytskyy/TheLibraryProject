@@ -16,5 +16,4 @@ public interface Repository<E, PK extends Serializable> {
     E find(PK id);
 
     List<E> findAll();
-
 }
