@@ -5,7 +5,7 @@ import com.library.repository.Repository;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Service<E, PK extends Serializable> {
+public interface CrudService<E, PK extends Serializable> {
 
     void save(E entity);
 
