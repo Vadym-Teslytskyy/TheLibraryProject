@@ -2,6 +2,6 @@ package com.library.repository;
 
 import com.library.entity.Author;
 
-public interface AuthorRepository extends Repository<Author, Integer> {
+public interface AuthorRepository extends CrudRepository<Author, Integer> {
 
 }

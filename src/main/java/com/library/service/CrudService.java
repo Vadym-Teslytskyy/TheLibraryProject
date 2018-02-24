@@ -1,6 +1,6 @@
 package com.library.service;
 
-import com.library.repository.Repository;
+import com.library.repository.CrudRepository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,5 +17,5 @@ public interface CrudService<E, PK extends Serializable> {
 
     List<E> findAll();
 
-    Repository<E, PK> getRepository();
+    CrudRepository<E, PK> getRepository();
 }

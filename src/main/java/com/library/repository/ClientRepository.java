@@ -2,6 +2,6 @@ package com.library.repository;
 
 import com.library.entity.Client;
 
-public interface ClientRepository extends Repository<Client, Integer> {
+public interface ClientRepository extends CrudRepository<Client, Integer> {
 
 }
