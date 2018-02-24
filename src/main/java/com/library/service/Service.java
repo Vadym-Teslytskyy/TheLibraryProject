@@ -1,4 +1,4 @@
-package com.library.services;
+package com.library.service;
 
 import com.library.repository.Repository;
 

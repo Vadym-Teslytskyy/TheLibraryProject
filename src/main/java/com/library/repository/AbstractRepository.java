@@ -7,11 +7,15 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractRepository<E, PK extends Serializable> implements Repository<E, PK> {
-    
+
     @PersistenceContext
     private EntityManager entityManager;
-    
+
     private Class<E> entityClass;
+
+    protected EntityManager getEntityManager() {
+        return entityManager;
+    }
 
     @Override
     public void save(E entity) {
@@ -37,12 +41,8 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
     public List<E> findAll() {
         String entityName = getEntityClass().getName();
         return entityManager
-                .createQuery("SELECT entity FROM " + entityName + " entity", getEntityClass())
+                .createQuery(String.format("SELECT entity FROM %s entity", entityName), getEntityClass())
                 .getResultList();
-    }
-    
-    protected EntityManager getEntityManager() {
-        return entityManager;
     }
 
     @SuppressWarnings("unchecked")
