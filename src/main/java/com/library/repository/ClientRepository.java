@@ -3,7 +3,8 @@ package com.library.repository;
 import com.library.entity.Book;
 import com.library.entity.Client;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ClientRepository extends CrudRepository<Client, Integer> {
@@ -22,7 +23,7 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
      * Task 3.3. Переглянути статистику по читачу
      * (скільки часу користується послугами бібліотеки)
      */
-    Integer getUsingLibraryDays(int clientId);
+//    Integer getUsingLibraryDays(int clientId);
 
 
     /**
@@ -33,26 +34,26 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
     /**
      * Task 8.1. Статистика по читачам (середній вік)
      */
-    Double getAverageAge();
+//    Double getAverageAge();
 
     /**
      * Task 8.2. Статистика по читачам (середній час користування бібліотекою)
      */
-    Double getAverageUsingLibraryTime();
+//    Double getAverageUsingLibraryTime();
 
     /**
      * Task 8.3. Статистика по читачам (середня кількість звернень за певний період)
      */
-    Double getAverageRentsCountByPeriod(LocalDate fromTime, LocalDate toTime);
+    BigDecimal getAverageRentsCountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
 
     /**
      * Task 9.1. Отримати середній вік читачів по певній книжці
      */
-    Double getAverageAgeByBook(int bookId);
+    List<Client> findByBook(int bookId);
 
     /**
      * Task 9.2. Отримати середній вік читачів по певному автору
      */
-    Double getAverageAgeByAuthor(int authorId);
+    List<Client> findByAuthor(int authorId);
 }
 
