@@ -38,5 +38,4 @@ public class CopyOfBook extends AbstractEntityId {
     public void setRent(Rent rent) {
         this.rent = rent;
     }
-
 }

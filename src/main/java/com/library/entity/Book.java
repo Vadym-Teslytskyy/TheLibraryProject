@@ -33,7 +33,7 @@ public class Book extends AbstractEntityId {
     private String name;
 
     @Column(name = "available_count")
-    private int avalibleCount;
+    private int availableCount;
 
     @Column(name = "general_count")
     private int generalCount;
@@ -135,12 +135,12 @@ public class Book extends AbstractEntityId {
         this.collaborationAuthors = collaborationAuthors;
     }
 
-    public int getAvalibleCount() {
-        return avalibleCount;
+    public int getAvailableCount() {
+        return availableCount;
     }
 
-    public void setAvalibleCount(int avalibleCount) {
-        this.avalibleCount = avalibleCount;
+    public void setAvailableCount(int availableCount) {
+        this.availableCount = availableCount;
     }
 
     public int getGeneralCount() {
