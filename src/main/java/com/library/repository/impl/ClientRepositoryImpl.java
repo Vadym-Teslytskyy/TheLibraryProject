@@ -37,7 +37,7 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
 //    @Override
 //    /** {@inheritDoc} */
 //    TODO Make logic in service tier
-//    public Integer getUsingLibraryDays(int clientId) {
+//    public Integer getUsingLibraryDaysCount(int clientId) {
 //        String sql = "SELECT client.registrationDate FROM Client client WHERE client.id = ?1";
 //        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
 //        query.setParameter(1, clientId);
