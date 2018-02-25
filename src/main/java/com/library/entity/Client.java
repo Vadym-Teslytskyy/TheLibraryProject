@@ -12,7 +12,8 @@ public class Client extends AbstractEntityId {
     private List<Rent> rents;
 
     @ManyToMany
-    private List<Book> readedBooks;
+    @Column(name = "read_books", length = 20)
+    private List<Book> readBooks;
 
     @Column(name = "first_name", length = 20)
     private String firstName;
@@ -70,14 +71,6 @@ public class Client extends AbstractEntityId {
         this.password = password;
     }
 
-    public List<Book> getReadedBooks() {
-        return readedBooks;
-    }
-
-    public void setReadedBooks(List<Book> readedBooks) {
-        this.readedBooks = readedBooks;
-    }
-
     public List<Rent> getRents() {
         return rents;
     }
@@ -85,7 +78,6 @@ public class Client extends AbstractEntityId {
     public void setRents(List<Rent> rents) {
         this.rents = rents;
     }
-
 
     public LocalDate getBirthDate() {
         return birthDate;
@@ -95,8 +87,36 @@ public class Client extends AbstractEntityId {
         this.birthDate = birthDate;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Client: %s %s\nlogin: %s\nage: %s", getFirstName(), getLastName(), getLogin(), getBirthDate());
+    public List<Book> getReadBooks() {
+        return readBooks;
     }
+
+    public void setReadBooks(List<Book> readBooks) {
+        this.readBooks = readBooks;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
 }

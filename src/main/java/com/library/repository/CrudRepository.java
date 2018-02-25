@@ -3,7 +3,7 @@ package com.library.repository;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Repository<E, PK extends Serializable> {
+public interface CrudRepository<E, PK extends Serializable> {
 
     Class<E> getEntityClass();
 

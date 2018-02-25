@@ -1,7 +1,6 @@
 package com.library.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "copy_of_book")
@@ -13,26 +12,15 @@ public class CopyOfBook extends AbstractEntityId {
     @OneToOne(mappedBy = "copyOfBook")
     private Rent rent;
 
-    @Column(name = "release_date")
-    private LocalDate releaseDate;
+    @Column(name = "is_available")
+    private boolean isAvailable;
 
-    @Column(name = "pages_amount")
-    private int pagesAmount;
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public int getPagesAmount() {
-        return pagesAmount;
-    }
-
-    public void setPagesAmount(int pagesAmount) {
-        this.pagesAmount = pagesAmount;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public Book getBook() {
@@ -50,5 +38,4 @@ public class CopyOfBook extends AbstractEntityId {
     public void setRent(Rent rent) {
         this.rent = rent;
     }
-
 }

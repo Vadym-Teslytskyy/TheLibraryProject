@@ -1,6 +1,7 @@
 package com.library.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -32,13 +33,35 @@ public class Book extends AbstractEntityId {
     private String name;
 
     @Column(name = "available_count")
-    private int avalibleCount;
+    private int availableCount;
 
     @Column(name = "general_count")
     private int generalCount;
 
     @Column(name = "full_description")
     private String fullDescription;
+
+    @Column(name = "release_date")
+    private LocalDate releaseDate;
+
+    @Column(name = "pages_amount")
+    private int pagesAmount;
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public int getPagesAmount() {
+        return pagesAmount;
+    }
+
+    public void setPagesAmount(int pagesAmount) {
+        this.pagesAmount = pagesAmount;
+    }
 
     public String getPhotoUrl() {
         return photoUrl;
@@ -112,12 +135,12 @@ public class Book extends AbstractEntityId {
         this.collaborationAuthors = collaborationAuthors;
     }
 
-    public int getAvalibleCount() {
-        return avalibleCount;
+    public int getAvailableCount() {
+        return availableCount;
     }
 
-    public void setAvalibleCount(int avalibleCount) {
-        this.avalibleCount = avalibleCount;
+    public void setAvailableCount(int availableCount) {
+        this.availableCount = availableCount;
     }
 
     public int getGeneralCount() {
@@ -127,9 +150,4 @@ public class Book extends AbstractEntityId {
     public void setGeneralCount(int generalCount) {
         this.generalCount = generalCount;
     }
-
-//    @Override
-//    public String toString() {
-//        return String.format("\nBook name - %s by %s %s\nGenre - %s, available number - %s\n ********* coauthors %s", getName(), getMainAuthor().getFirstName(), getMainAuthor().getLastName(), getGenre().getGenreName(), getAvalibleCounter(), collaborationAuthors);
-//    }
 }

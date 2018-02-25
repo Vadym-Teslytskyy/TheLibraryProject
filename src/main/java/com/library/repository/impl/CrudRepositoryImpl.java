@@ -1,4 +1,6 @@
-package com.library.repository;
+package com.library.repository.impl;
+
+import com.library.repository.CrudRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -6,7 +8,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-public abstract class AbstractRepository<E, PK extends Serializable> implements Repository<E, PK> {
+public abstract class CrudRepositoryImpl<E, PK extends Serializable> implements CrudRepository<E, PK> {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -2,6 +2,6 @@ package com.library.repository;
 
 import com.library.entity.Genre;
 
-public interface GenreRepository extends Repository<Genre, Integer> {
+public interface GenreRepository extends CrudRepository<Genre, Integer> {
 
 }

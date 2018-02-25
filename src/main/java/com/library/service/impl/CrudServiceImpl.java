@@ -1,12 +1,14 @@
-package com.library.service;
+package com.library.service.impl;
 
-import com.library.repository.Repository;
+import com.library.repository.CrudRepository;
+import com.library.service.CrudService;
+
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractService<E, PK extends Serializable, R extends Repository<E, PK>> implements Service<E, PK> {
-    
+public abstract class CrudServiceImpl<E, PK extends Serializable, R extends CrudRepository<E, PK>> implements CrudService<E, PK> {
+
     @Override
     @Transactional
     public void save(E entity) {
