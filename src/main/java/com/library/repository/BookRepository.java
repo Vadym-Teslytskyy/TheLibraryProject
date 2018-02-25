@@ -10,7 +10,7 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     /**
      * Task 1. Подивитись, чи певна книжка доступна
      */
-//    Boolean getBookAvailability(int bookId);
+    Book findAvailableBookById(int bookId);
 
     /**
      * Task 2.1. Вивести всі книжки по основному автору

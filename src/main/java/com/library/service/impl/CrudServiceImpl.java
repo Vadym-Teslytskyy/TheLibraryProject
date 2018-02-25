@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public abstract class CrudServiceImpl<E, PK extends Serializable, R extends CrudRepository<E, PK>> implements CrudService<E, PK> {
-    
+
     @Override
     @Transactional
     public void save(E entity) {

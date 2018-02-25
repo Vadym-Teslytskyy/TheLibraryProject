@@ -22,6 +22,14 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
 //        return null;
 //    }
 
+    @Override
+    public Book findAvailableBookById(int bookId) {
+        String sqlQuery = "SELECT b from Book b WHERE (b.id = ?1 and b.availableCount > 0)";
+        TypedQuery<Book> query= getEntityManager().createQuery(sqlQuery, Book.class);
+        query.setParameter(1,bookId);
+        return query.getSingleResult();
+    }
+
     /**
      * {@inheritDoc}
      */
