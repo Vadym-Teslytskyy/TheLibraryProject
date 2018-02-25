@@ -15,12 +15,12 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     /**
      * Task 2.1. Вивести всі книжки по основному автору
      */
-    List<Book> findByMainAuthor(String authorFirstName, String authorLastName);
+    List<Book> findByMainAuthor(int authorId);
 
     /**
      * Task 2.2. Вивести всі книжки по співавтору
      */
-    List<Book> findByCoAuthor(String authorFirstName, String authorLastName);
+    List<Book> findByCoAuthor(int authorId);
 
     /**
      * Task 4.1. Скільки книжок в бібліотеці, які видані в період незалежності

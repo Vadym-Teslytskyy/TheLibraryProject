@@ -17,12 +17,12 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
     }
 
     @Override
-    public List<Book> findByMainAuthor(String authorFirstName, String authorLastName) {
+    public List<Book> findByMainAuthor(int authorId) {
         return null;
     }
 
     @Override
-    public List<Book> findByCoAuthor(String authorFirstName, String authorLastName) {
+    public List<Book> findByCoAuthor(int authorId) {
         return null;
     }
 
