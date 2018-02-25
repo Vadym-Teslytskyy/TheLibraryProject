@@ -1,6 +1,7 @@
 package com.library.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -39,6 +40,28 @@ public class Book extends AbstractEntityId {
 
     @Column(name = "full_description")
     private String fullDescription;
+
+    @Column(name = "release_date")
+    private LocalDate releaseDate;
+
+    @Column(name = "pages_amount")
+    private int pagesAmount;
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public int getPagesAmount() {
+        return pagesAmount;
+    }
+
+    public void setPagesAmount(int pagesAmount) {
+        this.pagesAmount = pagesAmount;
+    }
 
     public String getPhotoUrl() {
         return photoUrl;
@@ -127,9 +150,4 @@ public class Book extends AbstractEntityId {
     public void setGeneralCount(int generalCount) {
         this.generalCount = generalCount;
     }
-
-//    @Override
-//    public String toString() {
-//        return String.format("\nBook name - %s by %s %s\nGenre - %s, available number - %s\n ********* coauthors %s", getName(), getMainAuthor().getFirstName(), getMainAuthor().getLastName(), getGenre().getGenreName(), getAvalibleCounter(), collaborationAuthors);
-//    }
 }
