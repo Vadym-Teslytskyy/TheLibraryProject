@@ -15,8 +15,10 @@ import java.util.List;
 public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         implements ClientRepository {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    /** {@inheritDoc} */
     public List<Book> findReadBooks(int clientId) {
         String sql = "SELECT client.readBooks FROM Client client WHERE client.id = ?1";
         TypedQuery<Book> query = getEntityManager().createQuery(sql, Book.class);
@@ -24,8 +26,10 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         return query.getResultList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    /** {@inheritDoc} */
     public List<Book> findNotReturnedBooks(int clientId) {
         String sql = "SELECT client.readedBooks FROM Client client JOIN client.rents rent "
                 + "WHERE rent.returnTime IS NULL AND client.id = ?1";
@@ -34,18 +38,23 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         return query.getResultList();
     }
 
-//    @Override
-//    /** {@inheritDoc} */
-//    TODO Make logic in service tier
-//    public Integer getUsingLibraryDaysCount(int clientId) {
-//        String sql = "SELECT client.registrationDate FROM Client client WHERE client.id = ?1";
-//        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
-//        query.setParameter(1, clientId);
-//        return query.getSingleResult();
-//    }
-
+    /**
+     * {@inheritDoc}
+     * Returns days count that preset client uses library (in days).
+     */
     @Override
-    /** {@inheritDoc} */
+    public Integer getUsingLibraryDaysCount(int clientId) {
+        String sql = "SELECT DATEDIFF (client.registrationDate, NOW()) "
+                + "FROM Client client WHERE client.id = ?1";
+        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
+        query.setParameter(1, clientId);
+        return query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Client> findDebtors() {
         String sql = "SELECT client FROM Client client JOIN FETCH client.rents rent "
                 + "WHERE rent.returnTime IS NULL AND rent.borrowingTime IS NOT NULL";
@@ -53,27 +62,34 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         return query.getResultList();
     }
 
-//    @Override
-//    /** {@inheritDoc} */
-//    TODO Make logic in service tier
-//    public Double getAverageAge() {
-//        "SELECT AVG(client.age) " +
-//                "FROM Client client"
-//    }
-
-//    @Override
-//    /** {@inheritDoc} */
-//    TODO Make logic in service tier
-//    public Double getAverageUsingLibraryTime() {
-//        String sql = "SELECT DATEDIFF(NOW(), client.registrationDate) "
-//                + "FROM Client client "
-//                + "WHERE client.id = ?1";
-//        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
-//        return query.getSingleResult();
-//    }
-
+    /**
+     * {@inheritDoc}
+     * Returns average age by all clients (in years).
+     */
     @Override
-    /** {@inheritDoc} */
+    public Double getAverageAge() {
+        String sql = "SELECT AVG(DATEDIFF(NOW(), client.birthDate) / 365.25) "
+                + "FROM Client client";
+        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
+        return query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     * Returns average days count that all clients use library (in days).
+     */
+    @Override
+    public Double getAverageUsingLibraryDaysCount() {
+        String sql = "SELECT AVG(DATEDIFF(NOW(), client.registrationDate)) "
+                + "FROM Client client";
+        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
+        return query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public BigDecimal getAverageRentsCountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT AVG(one_client_count) "
                 + "FROM client, "
@@ -88,28 +104,34 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         return (BigDecimal) nativeQuery.getSingleResult();
     }
 
+    /**
+     * {@inheritDoc}
+     * Returns average age by all clients that read preset book (in years)
+     */
     @Override
-    /** {@inheritDoc} */
-//    TODO Make logic in service tier
-    public List<Client> findByBook(int bookId) {
-        String sql = "SELECT client FROM Client client " +
-                "JOIN client.readBooks book " +
-                "WHERE book.id = ?1";
-        TypedQuery<Client> query = getEntityManager().createQuery(sql, Client.class);
+    public Double findAverageAgeByBook(int bookId) {
+        String sql = "SELECT AVG(DATEDIFF(NOW(), client.birthDate) / 365.25) "
+                + "FROM Client client "
+                + "JOIN client.readBooks book "
+                + "WHERE book.id = ?1";
+        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
         query.setParameter(1, bookId);
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
+    /**
+     * {@inheritDoc}
+     * Returns average age by all clients that read books by preset author (in years)
+     */
     @Override
-    /** {@inheritDoc} */
-//    TODO Make logic in service tier
-    public List<Client> findByAuthor(int authorId) {
-        String sql = "SELECT client FROM Client client " +
-                "JOIN client.readBooks book " +
-                "JOIN book.mainAuthor author " +
-                "WHERE author.id = ?1";
-        TypedQuery<Client> query = getEntityManager().createQuery(sql, Client.class);
+    public Double findAverageAgeByAuthor(int authorId) {
+        String sql = "SELECT AVG(DATEDIFF(NOW(), client.birthDate) / 365.25)"
+                + " FROM Client client "
+                + "JOIN client.readBooks book "
+                + "JOIN book.mainAuthor author "
+                + "WHERE author.id = ?1";
+        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
         query.setParameter(1, authorId);
-        return query.getResultList();
+        return query.getSingleResult();
     }
 }

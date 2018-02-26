@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -18,6 +16,7 @@ public class ClientServiceImpl extends CrudServiceImpl <Client, Integer, ClientR
 
     @Autowired
     private ClientRepository clientRepository;
+
     @Override
     public ClientRepository getRepository() {
         return clientRepository;
@@ -34,39 +33,37 @@ public class ClientServiceImpl extends CrudServiceImpl <Client, Integer, ClientR
     }
 
     @Override
-    public Long getUsingLibraryDaysCount(int clientId) {
-        Client client = getRepository().find(clientId);
-        LocalDate registrationDate = client.getRegistrationDate();
-        return registrationDate.until(LocalDate.now(), ChronoUnit.DAYS);
+    public Integer getUsingLibraryDaysCount(int clientId) {
+        return getRepository().getUsingLibraryDaysCount(clientId);
     }
 
     @Override
     public List<Client> findDebtors() {
-        return null;
+        return getRepository().findDebtors();
     }
 
     @Override
     public Double getAverageAge() {
-        return null;
+        return getRepository().getAverageAge();
     }
 
     @Override
-    public Double getAverageUsingLibraryTime() {
-        return null;
+    public Double getAverageUsingLibraryDaysCount() {
+        return getRepository().getAverageUsingLibraryDaysCount();
     }
 
     @Override
     public BigDecimal getAverageRentsCountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        return null;
+        return getRepository().getAverageRentsCountByPeriod(fromTime, toTime);
     }
 
     @Override
-    public List<Client> findByBook(int bookId) {
-        return null;
+    public Double findAverageAgeByBook(int bookId) {
+        return getRepository().findAverageAgeByBook(bookId);
     }
 
     @Override
-    public List<Client> findByAuthor(int authorId) {
-        return null;
+    public Double findAverageAgeByAuthor(int authorId) {
+        return getRepository().findAverageAgeByAuthor(authorId);
     }
 }
