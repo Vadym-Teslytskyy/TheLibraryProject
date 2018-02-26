@@ -14,102 +14,76 @@
     <script src="${pageContext.request.contextPath}/resources/js/registrationFormScript.js"></script>
 </head>
 <body>
-<div class="container">
 
-    <form class="well form-horizontal" action=" " method="post" id="contact_form">
-        <fieldset>
+<form action="/user/registrationForm" method="post">
+    <div class="container">
 
+        <div class="form-group">
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">First Name</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="first_name" placeholder="First Name" class="form-control" type="text">
-                    </div>
+            <label class="col-md-4 control-label" for="firstName">First Name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Last Name</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="last_name" placeholder="Last Name" class="form-control" type="text">
-                    </div>
+            <label class="col-md-4 control-label" for="lastName">Last Name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Login</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="login" placeholder="Login" class="form-control" type="text">
-                    </div>
+            <label class="col-md-4 control-label" for="login">Login</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" id="login" name="login" placeholder="Login" class="form-control">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" >Password</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="password" id="password" placeholder="Password" class="form-control">
-                    </div>
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="birthDate" class="col-sm-4 control-label">Date of Birth</label>
-                <div class="col-sm-9">
-                    <input type="date" id="birthDate" class="form-control">
+            <label for="birthDate" class="col-sm-4 control-label">Date of Birth</label>
+            <div class="col-sm-9">
+                <input type="date" id="birthDate" name="birthDate" class="form-control">
+            </div>
+
+            <label class="col-md-4 control-label" for="phoneNumber">Phone</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input type="text" name="phoneNumber" id="phoneNumber"
+                           placeholder="(068)111-1212" class="form-control">
                 </div>
             </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label">E-Mail</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
-                    </div>
+            <label class="col-md-4 control-label" for="homeAdress">Address</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input type="text" id="homeAdress" name="homeAdress" placeholder="Home Adress" class="form-control">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Phone</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input name="phone" placeholder="(068)111-1212" class="form-control" type="text">
-                    </div>
-                </div>
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning">Save<span class="glyphicon glyphicon-send"></span>
+                </button>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Address</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input name="address" placeholder="Address" class="form-control" type="text">
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span>
-                    </button>
-                </div>
-            </div>
+    </div>
+</form>
 
-        </fieldset>
-    </form>
-</div>
-</div><!-- /.container -->
 </body>
 </html>
