@@ -23,61 +23,72 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     @Override
     public Boolean getBookAvailability(int bookId) {
         Book book = bookRepository.findAvailableBookById(bookId);
-        return (book != null) ? true : false;
+        return (book != null);
     }
 
     @Override
     public List<Book> findByMainAuthor(int authorId) {
-        return null;
+        List<Book> books = bookRepository.findByMainAuthor(authorId);
+        return books;
     }
 
     @Override
     public List<Book> findByCoAuthor(int coAuthorId) {
-        return null;
+        List<Book> books = bookRepository.findByCoAuthor(coAuthorId);
+        return books;
     }
 
     @Override
     public List<Book> findReleasedDuringIndependence() {
-        return null;
+        List<Book> books = bookRepository.findReleasedDuringIndependence();
+        return books;
     }
 
     @Override
     public Long getRentCount(int bookId) {
-        return null;
+        Long rentCount = bookRepository.getRentCount(bookId);
+        return rentCount;
     }
 
     @Override
     public Long getCopiesRentCount(int bookId) {
-        return null;
+        Long copiesRentCount = bookRepository.getCopiesRentCount(bookId);
+        return copiesRentCount;
     }
 
     @Override
     public Double averageReadingTime(int bookId) {
-        return null;
+        Double averageReadingTime = bookRepository.averageReadingTime(bookId);
+        return averageReadingTime;
     }
 
     @Override
     public List<Book> findBestBooksByPeriod(LocalDateTime startDate, int resultListSize) {
-        return null;
+        List<Book> books = bookRepository.findBestBooksByPeriod(startDate, resultListSize);
+        return books;
     }
 
     @Override
     public List<Book> findWorstBooksByPeriod(LocalDateTime startDate, int resultListSize) {
-        return null;
+        List<Book> books = bookRepository.findBestBooksByPeriod(startDate, resultListSize);
+        return books;
     }
 
     @Override
     public List<Long> findBestCountOfRentByPeriod(LocalDateTime startDate, int resultListSize) {
-        return null;
+        List<Long> countOfRentByPeriod = bookRepository.findBestCountOfRentByPeriod(startDate, resultListSize);
+        return countOfRentByPeriod;
     }
 
     @Override
     public List<Long> findWorstCountOfRentByPeriod(LocalDateTime startDate, int resultListSize) {
-        return null;
+        List<Long> countOfRentByPeriod = bookRepository.findBestCountOfRentByPeriod(startDate, resultListSize);
+        return countOfRentByPeriod;
     }
 
     @Override
     public Book findBookByName(String bookName) {
-        return null;
+        Book book = bookRepository.findBookByName(bookName);
+        return book;
     }
 }

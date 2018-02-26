@@ -1,6 +1,7 @@
 package com.library.repository.impl;
 
 import com.library.entity.Book;
+import com.library.model.view.BookIndexView;
 import com.library.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,13 +15,6 @@ import java.util.List;
 public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         implements BookRepository {
     private static final LocalDate INDEPENDENCE_DAY_DATE = LocalDate.of(1991, Month.AUGUST, 24);
-
-    /**{@inheritDoc}*/
-//    TODO MAKE LOGIC IN SERVICE LEVEL
-//    @Override
-//    public Boolean getBookAvailability(int bookId) {
-//        return null;
-//    }
 
     @Override
     public Book findAvailableBookById(int bookId) {
@@ -163,5 +157,13 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
         query.setParameter(1, bookName);
         return query.getSingleResult();
+    }
+    @Override
+    public List<BookIndexView> findAllAvailableBookIndexViews() {
+        String sqlQuery = "SELECT new com.library.model.view.BookIndexView"
+                +"( b.id, b.name, a.firstName, a.lastName, g.genreName, b.photoUrl, b.availableCount) "
+                    +"FROM Book b JOIN b.genre g JOIN b.mainAuthor a WHERE (b.id = ?1 and b.availableCount > 0)";
+        TypedQuery<BookIndexView> query = getEntityManager().createQuery(sqlQuery, BookIndexView.class);
+        return query.getResultList();
     }
 }

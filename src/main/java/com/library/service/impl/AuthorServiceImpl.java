@@ -15,4 +15,10 @@ public class AuthorServiceImpl extends CrudServiceImpl<Author, Integer, AuthorRe
     public AuthorRepository getRepository() {
         return authorRepository;
     }
+
+    @Override
+    public Author findAuthorByBookId(Integer bookId) {
+        Author author = authorRepository.findAuthorByBookId(bookId);
+        return author;
+    }
 }
