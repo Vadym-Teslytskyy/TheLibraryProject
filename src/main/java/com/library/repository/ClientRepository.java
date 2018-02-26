@@ -23,7 +23,7 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
      * Task 3.3. Переглянути статистику по читачу
      * (скільки часу користується послугами бібліотеки)
      */
-//    Integer getUsingLibraryDays(int clientId);
+//    Integer getUsingLibraryDaysCount(int clientId);
 
 
     /**

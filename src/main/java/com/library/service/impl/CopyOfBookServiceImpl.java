@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 public class CopyOfBookServiceImpl extends CrudServiceImpl <CopyOfBook, Integer, CopyOfBookRepository> implements CopyOfBookServise{
 
     @Autowired
-    private CopyOfBookRepository cRepository;
+    private CopyOfBookRepository copyRepository;
+
     @Override
     public CopyOfBookRepository getRepository() {
-        return cRepository;
+        return copyRepository;
     }
 }
