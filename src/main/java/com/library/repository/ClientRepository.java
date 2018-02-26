@@ -23,7 +23,7 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
      * Task 3.3. Переглянути статистику по читачу
      * (скільки часу користується послугами бібліотеки)
      */
-//    Integer getUsingLibraryDays(int clientId);
+    Integer getUsingLibraryDaysCount(int clientId);
 
 
     /**
@@ -34,12 +34,12 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
     /**
      * Task 8.1. Статистика по читачам (середній вік)
      */
-//    Double getAverageAge();
+    Double getAverageAge();
 
     /**
      * Task 8.2. Статистика по читачам (середній час користування бібліотекою)
      */
-//    Double getAverageUsingLibraryTime();
+    Double getAverageUsingLibraryDaysCount();
 
     /**
      * Task 8.3. Статистика по читачам (середня кількість звернень за певний період)
@@ -49,11 +49,11 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
     /**
      * Task 9.1. Отримати середній вік читачів по певній книжці
      */
-    List<Client> findByBook(int bookId);
+    Double findAverageAgeByBook(int bookId);
 
     /**
      * Task 9.2. Отримати середній вік читачів по певному автору
      */
-    List<Client> findByAuthor(int authorId);
+    Double findAverageAgeByAuthor(int authorId);
 }
 
