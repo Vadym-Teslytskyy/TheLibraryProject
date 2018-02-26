@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/theListOfAllBooks">Знайти цікаву книгу</a></li>
-                <li><a href="#">Зареєструватись</a></li>
+                <li><a href="/registrationForm">Зареєструватись</a></li>
                 <li><a href="#">Увійти</a></li>
             </ul>
         </div>
