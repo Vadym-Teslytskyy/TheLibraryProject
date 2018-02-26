@@ -12,5 +12,11 @@
 </head>
 <body>
 
+<div class="book container">
+    <h2>${"bookName"}</h2>
+    <p>${"bookDescription"}</p>
+    <h6>${"bookPages"}</h6>
+</div>
+
 </body>
 </html>
