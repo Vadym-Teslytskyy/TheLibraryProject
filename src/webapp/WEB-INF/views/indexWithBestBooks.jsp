@@ -1,48 +1,12 @@
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Title</title>--%>
-    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">--%>
-    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">--%>
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-    <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<nav class="navbar navbar-default navbar-fixed-top">--%>
-    <%--<div class="container">--%>
-        <%--<div class="navbar-header">--%>
-            <%--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">--%>
-                <%--<span class="icon-bar"></span>--%>
-                <%--<span class="icon-bar"></span>--%>
-                <%--<span class="icon-bar"></span>--%>
-            <%--</button>--%>
-            <%--<a class="navbar-brand" href="#">Головна</a>--%>
-        <%--</div>--%>
-        <%--<div class="collapse navbar-collapse" id="myNavbar">--%>
-            <%--<ul class="nav navbar-nav navbar-right">--%>
-                <%--<li><a href="/theListOfAllBooks">Знайти цікаву книгу</a></li>--%>
-                <%--<li><a href="/registrationForm">Зареєструватись</a></li>--%>
-                <%--<li><a href="#">Увійти</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</nav>--%>
-
-<%--<!-- First Container -->--%>
-<%--<div class="container-fluid bg-1 text-center">--%>
-    <%--<h2 class="margin">Книги - це інструмент насадження мудрості.</h2>--%>
-<%--</div>--%>
-
-
-
-<%--<!-- Footer -->--%>
-<%--<footer class="container-fluid bg-4 text-center">--%>
-    <%--<p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p>--%>
-<%--</footer>--%>
-
-<%--</body>--%>
-<%--</html>--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 27.02.2018
+  Time: 11:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
@@ -101,7 +65,10 @@
         <div class="row">
             <h1 class="lead">THE BEST LIBRARY IN LVIV</h1>
             <p class="tagline">Pump your brain with our books</p>
-            <p><a class="btn btn-default btn-lg" role="button">MORE INFO</a> <a class="btn btn-action btn-lg" href="/">Show available books</a></p>
+            <p>
+                <a class="btn btn-default btn-lg" role="button">MORE INFO</a>
+                <a class="btn btn-action btn-lg" href="/">Show available books</a>
+            </p>
         </div>
     </div>
 </header>
@@ -122,6 +89,7 @@
     <div class="container">
 
         <div class="row">
+            <c:forEach var="book" items="${books}">
 
             <!-- BookCard  -->
             <div class="col-md-3 col-sm-6 highlight">
@@ -135,42 +103,7 @@
                     </p>
                 </div>
             </div>
-            <!-- BookCard  -->
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption">
-                    <h4><img src="https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1" alt="">${book.name}</h4>
-                </div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate.
-                        Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?
-                    </p>
-                </div>
-            </div>
-            <!-- BookCard  -->
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption">
-                    <h4><img src="https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1" alt="">${book.name}</h4>
-                </div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate.
-                        Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?
-                    </p>
-                </div>
-            </div>
-            <!-- BookCard  -->
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption">
-                    <h4><img src="https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1" alt="">${book.name}</h4>
-                </div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate.
-                        Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?
-                    </p>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <!-- /row  -->
 
@@ -265,7 +198,6 @@
 <script src="/resources/js/headroom.min.js"></script>
 <script src="/resources/js/jQuery.headroom.min.js"></script>
 <script src="/resources/js/template.js"></script>
-
 </body>
 
 </html>

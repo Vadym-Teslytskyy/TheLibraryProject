@@ -6,14 +6,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
+@RequestMapping("/")
 public class BooksController {
+
+    private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
 
     private final BookService bookService;
 
     @Autowired
     public BooksController(BookService bookService) {
         this.bookService = bookService;
+    }
+
+    @RequestMapping("/")
+    public String findBestOfFourPerMonth(Model model) {
+        model.addAttribute("books", bookService.findBestBooksByPeriod(MONTH_AGO, 4));
+        return "indexWithBestBooks";
     }
 
     @RequestMapping("/theListOfAllBooks")
