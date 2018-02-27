@@ -58,11 +58,11 @@
                 <div class="col-md-6 widget">
                     <div class="widget-body">
                         <p class="simplenav">
-                            <a href="#">Home</a> |
+                            <a href="/">Home</a> |
                             <a href="/">About</a> |
                             <a href="/">Sidebar</a> |
                             <a href="/">Contact</a> |
-                            <b><a href="/">Sign up</a></b>
+                            <b><a href="/signin">Sign up</a></b>
                         </p>
                     </div>
                 </div>

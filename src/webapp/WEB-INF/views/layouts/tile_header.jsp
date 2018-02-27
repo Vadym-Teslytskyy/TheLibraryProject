@@ -13,7 +13,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="/">About</a></li>
                 <li class="dropdown">
                     <a href="/" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
@@ -23,7 +23,7 @@
                     </ul>
                 </li>
                 <li><a href="/">Contact</a></li>
-                <li><a class="btn" href="/">SIGN IN / SIGN UP</a></li>
+                <li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->

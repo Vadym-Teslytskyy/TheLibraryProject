@@ -6,84 +6,66 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Registrarion form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="${pageContext.request.contextPath}/resources/js/registrationFormScript.js"></script>
-</head>
-<body>
+<!-- container -->
+<div class="container">
 
-<form action="/user/registrationForm" method="post">
-    <div class="container">
+    <div class="row extra-top-space">
 
-        <div class="form-group">
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Registration</h1>
+            </header>
 
-            <label class="col-md-4 control-label" for="firstName">First Name</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Register a new account</h3>
+                        <p class="text-center text-muted">If your account already exist, please <a
+                                href="/signin">Login</a> Else please enter the fields below. </p>
+                        <hr>
+
+                        <form>
+                            <div class="top-margin">
+                                <label>First Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="top-margin">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="top-margin">
+                                <label>Email Address <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="row top-margin">
+                                <div class="col-sm-6">
+                                    <label>Password <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Confirm Password <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-4 text-right">
+                                    <button class="btn btn-action" type="submit">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
 
-            <label class="col-md-4 control-label" for="lastName">Last Name</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control">
-                </div>
-            </div>
-
-            <label class="col-md-4 control-label" for="login">Login</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" id="login" name="login" placeholder="Login" class="form-control">
-                </div>
-            </div>
-
-            <label class="col-md-4 control-label" for="password">Password</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-                </div>
-            </div>
-
-            <label for="birthDate" class="col-sm-4 control-label">Date of Birth</label>
-            <div class="col-sm-9">
-                <input type="date" id="birthDate" name="birthDate" class="form-control">
-            </div>
-
-            <label class="col-md-4 control-label" for="phoneNumber">Phone</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input type="text" name="phoneNumber" id="phoneNumber"
-                           placeholder="(068)111-1212" class="form-control">
-                </div>
-            </div>
-
-            <label class="col-md-4 control-label" for="homeAdress">Address</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input type="text" id="homeAdress" name="homeAdress" placeholder="Home Adress" class="form-control">
-                </div>
-            </div>
-
-            <label class="col-md-4 control-label"></label>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-warning">Save<span class="glyphicon glyphicon-send"></span>
-                </button>
-            </div>
-
-        </div>
+        </article>
+        <!-- /Article -->
 
     </div>
-</form>
-
-</body>
-</html>
+</div>
+<!-- /container -->
