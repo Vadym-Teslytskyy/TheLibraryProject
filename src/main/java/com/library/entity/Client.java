@@ -39,6 +39,9 @@ public class Client extends AbstractEntityId {
     @Column(name = "home_address")
     private String homeAddress;
 
+    @Column(name = "role")
+    private Role role;
+
     public String getLogin() {
         return login;
     }
@@ -119,4 +122,11 @@ public class Client extends AbstractEntityId {
         this.homeAddress = homeAddress;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

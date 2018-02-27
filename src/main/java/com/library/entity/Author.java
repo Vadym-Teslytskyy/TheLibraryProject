@@ -1,6 +1,7 @@
 package com.library.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,15 @@ public class Author extends AbstractEntityId {
 
     @Column(name = "last_name", length = 20)
     private String lastName;
+
+    @Column(name = "photo_url")
+    private String photoUrl;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+
+    @Column(name = "country")
+    private String country;
 
     public String getFirstName() {
         return firstName;
@@ -57,4 +67,27 @@ public class Author extends AbstractEntityId {
         return String.format("%s %s", getFirstName(), getLastName());
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }
