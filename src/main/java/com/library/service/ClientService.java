@@ -2,6 +2,7 @@ package com.library.service;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
+import com.library.model.request.ClientRequest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -54,4 +55,6 @@ public interface ClientService extends CrudService<Client, Integer> {
      * Task 9.2. Отримати середній вік читачів по певному автору
      */
     Double findAverageAgeByAuthor(int authorId);
+
+    void save(ClientRequest clientRequest);
 }

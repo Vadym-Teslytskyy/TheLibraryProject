@@ -2,11 +2,13 @@ package com.library.service.impl;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
+import com.library.model.request.ClientRequest;
 import com.library.repository.ClientRepository;
 import com.library.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,5 +67,19 @@ public class ClientServiceImpl extends CrudServiceImpl <Client, Integer, ClientR
     @Override
     public Double findAverageAgeByAuthor(int authorId) {
         return getRepository().findAverageAgeByAuthor(authorId);
+    }
+
+    @Override
+    @Transactional
+    public void save(ClientRequest clientRequest) {
+        Client client = new Client();
+        client.setId(clientRequest.getId());
+        client.setFirstName(clientRequest.getFirstName());
+        client.setLastName(clientRequest.getLastName());
+        client.setLogin(clientRequest.getLogin());
+        client.setPassword(clientRequest.getPassword());
+        client.setHomeAddress(clientRequest.getHomeAdress());
+        client.setPhoneNumber(clientRequest.getPhoneNumber());
+        getRepository().save(client);
     }
 }
