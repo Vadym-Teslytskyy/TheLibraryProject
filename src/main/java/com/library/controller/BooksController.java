@@ -24,7 +24,7 @@ public class BooksController {
     @RequestMapping("/")
     public String findBestOfFourPerMonth(Model model) {
         model.addAttribute("books", bookService.findBestBooksByPeriod(MONTH_AGO, 4));
-        return "indexWithBestBooks";
+        return "index";
     }
 
     @RequestMapping("/theListOfAllBooks")
