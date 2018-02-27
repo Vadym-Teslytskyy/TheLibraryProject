@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Andriy
@@ -28,26 +29,47 @@
                         <form>
                             <div class="top-margin">
                                 <label>First Name</label>
-                                <input type="text" class="form-control">
+                                <form:input type="text" id="firstName" placeholder="First Name" class="form-control"
+                                            path="firstName"/>
                             </div>
                             <div class="top-margin">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control">
+                                <form:input type="text" id="lastName" placeholder="Last Name" class="form-control"
+                                            path="lastName"/>
                             </div>
                             <div class="top-margin">
-                                <label>Email Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control">
+                                <label>Login<span class="text-danger">*</span></label>
+                                <form:input type="text" id="login" placeholder="Login" class="form-control"
+                                            path="login"/>
                             </div>
 
                             <div class="row top-margin">
                                 <div class="col-sm-6">
                                     <label>Password <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
+                                    <form:input type="password" id="password" placeholder="Password"
+                                                class="form-control" path="password"/>
                                 </div>
                                 <div class="col-sm-6">
                                     <label>Confirm Password <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control">
                                 </div>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Birth day<span class="text-danger">*</span></label>
+                                <form:input type="date" id="birthDate" class="form-control" path="birthDate"/>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Phone number<span class="text-danger">*</span></label>
+                                <form:input type="text" id="phoneNumber"
+                                            placeholder="(068)111-1212" class="form-control" path="phoneNumber"/>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Home adress<span class="text-danger">*</span></label>
+                                <form:input type="text" id="homeAdress" placeholder="Home Adress" class="form-control"
+                                            path="homeAdress"/>
                             </div>
 
                             <hr>
