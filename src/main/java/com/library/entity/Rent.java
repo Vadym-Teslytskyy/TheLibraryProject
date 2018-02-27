@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Table(name = "rent")
 public class Rent extends AbstractEntityId {
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private CopyOfBook copyOfBook;
 
     @ManyToOne(fetch = FetchType.LAZY)

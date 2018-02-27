@@ -1,6 +1,7 @@
 package com.library.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "copy_of_book")
@@ -9,8 +10,8 @@ public class CopyOfBook extends AbstractEntityId {
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
 
-    @OneToOne(mappedBy = "copyOfBook")
-    private Rent rent;
+    @OneToMany(mappedBy = "copyOfBook")
+    private List<Rent> rents;
 
     @Column(name = "is_available")
     private boolean isAvailable;
@@ -31,11 +32,11 @@ public class CopyOfBook extends AbstractEntityId {
         this.book = book;
     }
 
-    public Rent getRent() {
-        return rent;
+    public List<Rent> getRents() {
+        return rents;
     }
 
-    public void setRent(Rent rent) {
-        this.rent = rent;
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
     }
 }

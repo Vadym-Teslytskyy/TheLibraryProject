@@ -8,10 +8,10 @@ import java.util.List;
 @Table(name = "book")
 public class Book extends AbstractEntityId {
 
-    @ManyToMany
-    @JoinTable(name = "book_id_user_id",
-            joinColumns = {@JoinColumn(name = "book_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @ManyToMany(mappedBy = "readBooks")
+//    @JoinTable(name = "book_id_user_id",
+//            joinColumns = {@JoinColumn(name = "book_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<Client> users;
 
     @OneToMany(mappedBy = "book")
