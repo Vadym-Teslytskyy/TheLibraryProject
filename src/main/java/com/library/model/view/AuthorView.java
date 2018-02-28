@@ -1,5 +1,7 @@
 package com.library.model.view;
 
+import com.library.entity.Author;
+
 import java.time.LocalDate;
 
 public class AuthorView {
@@ -12,8 +14,11 @@ public class AuthorView {
     private String country;
     private Double averageClientsAge;
 
-    public AuthorView(Integer id, String photoUrl, String firstName, String lastName,
-                      LocalDate birthDate, String country, Double averageClientsAge) {
+    public AuthorView() {
+    }
+
+    private AuthorView(Integer id, String photoUrl, String firstName, String lastName,
+                       LocalDate birthDate, String country, Double averageClientsAge) {
         this.id = id;
         this.photoUrl = photoUrl;
         this.firstName = firstName;
@@ -23,8 +28,14 @@ public class AuthorView {
         this.averageClientsAge = averageClientsAge;
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public AuthorView(Author author, Double averageClientsAge) {
+        this.id = author.getId();
+        this.photoUrl = author.getPhotoUrl();
+        this.firstName = author.getFirstName();
+        this.lastName = author.getLastName();
+        this.birthDate = author.getBirthDate();
+        this.country = author.getCountry();
+        this.averageClientsAge = averageClientsAge;
     }
 
     public String getPhotoUrl() {
@@ -53,6 +64,10 @@ public class AuthorView {
 
     public Integer getId() {
         return id;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {

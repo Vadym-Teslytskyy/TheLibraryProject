@@ -20,7 +20,7 @@
             <div class="row widget">
                 <div class="col-xs-12">
                     <p>
-                        <img src="https://www.penguinrandomhouse.co.uk/content/dam/prh-corporate/penguin-random-house/corporate/DesignAward/2018/9788184754759%20Animal%20Farm%20ebook%20-%20Penguin.jpg"
+                        <img src="/resources/images/book_previews/${book.photoUrl}"
                              alt=""></p>
                 </div>
             </div>
@@ -30,21 +30,25 @@
         <!-- Article main content -->
         <article class="col-md-8 maincontent">
             <header class="page-header">
-                <h1 class="page-title page-header">Animal Farm</h1>
-                <h4 class="page-title">Author: George Orwell</h4>
-                <h4 class="page-title">Coauthors: Exemple, Exemple</h4>
-                <h4 class="page-title page-header">Genre: Some genre</h4>
-                <h5 class="page-title">Release date: 1985-10-12</h5>
-                <h5 class="page-title page-header">Pages amount: 120</h5>
-                <h6 class="page-title">Readers avg age: 35</h6>
+                <h1 class="page-title page-header">${book.name}</h1>
+                <h4 class="page-title">Author: ${book.authorFirstName} ${book.authorLastName}</h4>
+
+                <c:if test="${!empty book.collaborationAuthors}">
+                    <h4 class="page-title">Coauthors:
+                        <c:forEach var="author" items="${book.collaborationAuthors}">
+                            ${author.firstName} ${author.lastName},
+                        </c:forEach>
+                    </h4>
+                </c:if>
+                <h4 class="page-title page-header">Genre: ${book.genre}</h4>
+                <h5 class="page-title">Release date: ${book.releaseDate.year}</h5>
+                <h5 class="page-title page-header">Pages amount: ${book.pagesAmount}</h5>
+                <h6 class="page-title">Readers avg age: ${book.averageClientsAge}</h6>
             </header>
 
 
             <blockquote>
-                Some description here!
-                Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum, ex, quasi incidunt
-                similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi facere ullam
-                voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.
+                ${book.fullDescription}
             </blockquote>
             <button type="button" class="btn btn-success pull-right">Rent now!</button>
 
