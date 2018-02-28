@@ -14,14 +14,14 @@ public class BookView {
     private String genre;
     private LocalDate releaseDate;
     private String fullDescription;
-    private int pagesAmount;
-    private int availableCount;
-    private int generalCount;
-    private double averageClientsAge;
+    private Integer pagesAmount;
+    private Integer availableCount;
+    private Integer generalCount;
+    private Double averageClientsAge;
 
 //    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
 //                    List<String> collaborationAuthors, String genre, LocalDate releaseDate, String fullDescription,
-//                    int pagesAmount, int availableCount, int generalCount, double averageClientsAge) {
+//                    Integer pagesAmount, Integer availableCount, Integer generalCount, Double averageClientsAge) {
 //        this.id = id;
 //        this.photoUrl = photoUrl;
 //        this.name = Objects.requireNonNull(name, "name");
@@ -110,39 +110,39 @@ public class BookView {
         this.fullDescription = fullDescription;
     }
 
-    public int getPagesAmount() {
-        return pagesAmount;
-    }
-
-    public void setPagesAmount(int pagesAmount) {
-        this.pagesAmount = pagesAmount;
-    }
-
     public static Builder builder() {
         return new Builder();
     }
 
-    public int getAvailableCount() {
+    public Integer getPagesAmount() {
+        return pagesAmount;
+    }
+
+    public void setPagesAmount(Integer pagesAmount) {
+        this.pagesAmount = pagesAmount;
+    }
+
+    public Integer getAvailableCount() {
         return availableCount;
     }
 
-    public void setAvailableCount(int availableCount) {
+    public void setAvailableCount(Integer availableCount) {
         this.availableCount = availableCount;
     }
 
-    public int getGeneralCount() {
+    public Integer getGeneralCount() {
         return generalCount;
     }
 
-    public void setGeneralCount(int generalCount) {
+    public void setGeneralCount(Integer generalCount) {
         this.generalCount = generalCount;
     }
 
-    public double getAverageClientsAge() {
+    public Double getAverageClientsAge() {
         return averageClientsAge;
     }
 
-    public void setAverageClientsAge(double averageClientsAge) {
+    public void setAverageClientsAge(Double averageClientsAge) {
         this.averageClientsAge = averageClientsAge;
     }
 
@@ -157,10 +157,10 @@ public class BookView {
         private String genre;
         private LocalDate releaseDate;
         private String fullDescription;
-        private int pagesAmount;
-        private int availableCount;
-        private int generalCount;
-        private double averageClientsAge;
+        private Integer pagesAmount;
+        private Integer availableCount;
+        private Integer generalCount;
+        private Double averageClientsAge;
 
         public Builder setId(Integer id) {
             this.id = id;
@@ -207,22 +207,22 @@ public class BookView {
             return this;
         }
 
-        public Builder setPagesAmount(int pagesAmount) {
+        public Builder setPagesAmount(Integer pagesAmount) {
             this.pagesAmount = pagesAmount;
             return this;
         }
 
-        public Builder setAvailableCount(int availableCount) {
+        public Builder setAvailableCount(Integer availableCount) {
             this.availableCount = availableCount;
             return this;
         }
 
-        public Builder setGeneralCount(int generalCount) {
+        public Builder setGeneralCount(Integer generalCount) {
             this.generalCount = generalCount;
             return this;
         }
 
-        public Builder setAverageClientsAge(double averageClientsAge) {
+        public Builder setAverageClientsAge(Double averageClientsAge) {
             this.averageClientsAge = averageClientsAge;
             return this;
         }

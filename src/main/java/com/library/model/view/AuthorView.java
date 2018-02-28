@@ -10,10 +10,10 @@ public class AuthorView {
     private String lastName;
     private LocalDate birthDate;
     private String country;
-    private double averageClientsAge;
+    private Double averageClientsAge;
 
     public AuthorView(Integer id, String photoUrl, String firstName, String lastName,
-                      LocalDate birthDate, String country, double averageClientsAge) {
+                      LocalDate birthDate, String country, Double averageClientsAge) {
         this.id = id;
         this.photoUrl = photoUrl;
         this.firstName = firstName;
@@ -47,7 +47,7 @@ public class AuthorView {
         return country;
     }
 
-    public double getAverageClientsAge() {
+    public Double getAverageClientsAge() {
         return averageClientsAge;
     }
 
@@ -63,7 +63,7 @@ public class AuthorView {
         private String lastName;
         private LocalDate birthDate;
         private String country;
-        private double averageClientsAge;
+        private Double averageClientsAge;
 
         public Builder setId(Integer id) {
             this.id = id;
@@ -95,7 +95,7 @@ public class AuthorView {
             return this;
         }
 
-        public Builder setAverageClientsAge(double averageClientsAge) {
+        public Builder setAverageClientsAge(Double averageClientsAge) {
             this.averageClientsAge = averageClientsAge;
             return this;
         }
