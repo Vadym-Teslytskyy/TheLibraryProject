@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
 @Controller
@@ -22,7 +23,7 @@ public class BooksController {
     }
 
     @RequestMapping("/")
-    public String findBestOfFourPerMonth(Model model) {
+    public String findBestOfFourPerMonth(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("books", bookService.findBestBooksByPeriod(MONTH_AGO, 4));
         return "index";
     }
@@ -32,6 +33,4 @@ public class BooksController {
         model.addAttribute("books", bookService.findAll());
         return "theListOfAllBooks";
     }
-
-
 }

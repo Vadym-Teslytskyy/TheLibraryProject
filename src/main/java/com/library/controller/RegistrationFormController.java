@@ -24,8 +24,8 @@ public class RegistrationFormController {
         return "signIn";
     }
 
-    @RequestMapping("/registration")
-    public String theListOfAllBooks(Model model) {
+    @GetMapping("/registration")
+    public String getRegistrationPage(Model model) {
         return "registrationForm";
     }
 
@@ -34,7 +34,7 @@ public class RegistrationFormController {
         return new ClientRequest();
     }
 
-    @PostMapping
+    @PostMapping("/registration")
     public String save(@ModelAttribute("clientComponent") ClientRequest request, SessionStatus status) {
         clientService.save(request);
         return cancel(status);

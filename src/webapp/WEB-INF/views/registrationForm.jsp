@@ -26,7 +26,7 @@
                                 href="/signin">Login</a> Else please enter the fields below. </p>
                         <hr>
 
-                        <form>
+                        <form:form action="/registration" method="POST" modelAttribute="clientComponent">
                             <div class="top-margin">
                                 <label>First Name</label>
                                 <form:input type="text" id="firstName" placeholder="First Name" class="form-control"
@@ -79,7 +79,7 @@
                                     <button class="btn btn-action" type="submit">Register</button>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
 
