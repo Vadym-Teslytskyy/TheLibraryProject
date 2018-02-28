@@ -19,7 +19,7 @@ public interface BookService extends CrudService<Book, Integer> {
 
     Long getCopiesRentCount(int bookId);
 
-    Double averageReadingTime(int bookId);
+    Double getAverageReadingTime(int bookId);
 
     List<Book> findBestBooksByPeriod(LocalDateTime startDate, int resultListSize);
 

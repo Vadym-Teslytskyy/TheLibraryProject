@@ -6,7 +6,6 @@ import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     }
 
     @Override
-    public Double averageReadingTime(int bookId) {
+    public Double getAverageReadingTime(int bookId) {
         Double averageReadingTime = bookRepository.averageReadingTime(bookId);
         return averageReadingTime;
     }

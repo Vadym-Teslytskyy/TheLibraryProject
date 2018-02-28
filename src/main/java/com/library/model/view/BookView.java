@@ -1,5 +1,6 @@
 package com.library.model.view;
 
+import com.library.entity.Author;
 import com.library.entity.Book;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class BookView {
     private String name;
     private String authorFirstName;
     private String authorLastName;
-    private List<String> collaborationAuthors;
+    private List<Author> collaborationAuthors;
     private String genre;
     private LocalDate releaseDate;
     private String fullDescription;
@@ -48,11 +49,7 @@ public class BookView {
         this.name = book.getName();
         this.authorFirstName = book.getMainAuthor().getFirstName();
         this.authorLastName = book.getMainAuthor().getLastName();
-        for (int i = 0; i < book.getCollaborationAuthors().size(); i++) {
-            String collaborationAuthorName = book.getCollaborationAuthors().get(i).getFirstName()
-                    + " " + book.getCollaborationAuthors().get(i).getLastName();
-            this.collaborationAuthors.add(i, collaborationAuthorName);
-        }
+        this.collaborationAuthors = book.getCollaborationAuthors();
         this.genre = book.getGenre().getGenreName();
         this.releaseDate = book.getReleaseDate();
         this.fullDescription = book.getFullDescription();
@@ -102,11 +99,11 @@ public class BookView {
         this.authorLastName = authorLastName;
     }
 
-    public List<String> getCollaborationAuthors() {
+    public List<Author> getCollaborationAuthors() {
         return collaborationAuthors;
     }
 
-    public void setCollaborationAuthors(List<String> collaborationAuthors) {
+    public void setCollaborationAuthors(List<Author> collaborationAuthors) {
         this.collaborationAuthors = collaborationAuthors;
     }
 
@@ -177,7 +174,7 @@ public class BookView {
         private String name;
         private String authorFirstName;
         private String authorLastName;
-        private List<String> collaborationAuthors;
+        private List<Author> collaborationAuthors;
         private String genre;
         private LocalDate releaseDate;
         private String fullDescription;
@@ -211,7 +208,7 @@ public class BookView {
             return this;
         }
 
-        public Builder setCollaborationAuthors(List<String> collaborationAuthors) {
+        public Builder setCollaborationAuthors(List<Author> collaborationAuthors) {
             this.collaborationAuthors = collaborationAuthors;
             return this;
         }

@@ -38,7 +38,7 @@ public class Book extends AbstractEntityId {
     @Column(name = "general_count")
     private Integer generalCount;
 
-    @Column(name = "full_description")
+    @Column(name = "full_description", length = 1000)
     private String fullDescription;
 
     @Column(name = "release_date")
