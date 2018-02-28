@@ -26,7 +26,7 @@ public class RegistrationFormController {
 
     @GetMapping("/registration")
     public String getRegistrationPage(Model model) {
-        return "registrationForm";
+        return "registration";
     }
 
     @ModelAttribute("clientComponent")
@@ -43,7 +43,7 @@ public class RegistrationFormController {
     @GetMapping("/cancel")
     public String cancel(SessionStatus status) {
         status.setComplete();
-        return "redirect:/registrationForm";
+        return "redirect:/registration";
     }
 
 }

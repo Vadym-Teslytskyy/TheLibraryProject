@@ -14,8 +14,8 @@
     <definition name="signIn" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/signIn.jsp"/>
     </definition>
-    <definition name="registrationForm" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/registrationForm.jsp"/>
+    <definition name="registration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
 
 </tiles-definitions>
