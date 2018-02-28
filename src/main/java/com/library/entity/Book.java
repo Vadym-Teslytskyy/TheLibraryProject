@@ -33,10 +33,10 @@ public class Book extends AbstractEntityId {
     private String name;
 
     @Column(name = "available_count")
-    private int availableCount;
+    private Integer availableCount;
 
     @Column(name = "general_count")
-    private int generalCount;
+    private Integer generalCount;
 
     @Column(name = "full_description")
     private String fullDescription;
@@ -45,7 +45,7 @@ public class Book extends AbstractEntityId {
     private LocalDate releaseDate;
 
     @Column(name = "pages_amount")
-    private int pagesAmount;
+    private Integer pagesAmount;
 
     public LocalDate getReleaseDate() {
         return releaseDate;
@@ -55,11 +55,11 @@ public class Book extends AbstractEntityId {
         this.releaseDate = releaseDate;
     }
 
-    public int getPagesAmount() {
+    public Integer getPagesAmount() {
         return pagesAmount;
     }
 
-    public void setPagesAmount(int pagesAmount) {
+    public void setPagesAmount(Integer pagesAmount) {
         this.pagesAmount = pagesAmount;
     }
 
@@ -135,19 +135,19 @@ public class Book extends AbstractEntityId {
         this.collaborationAuthors = collaborationAuthors;
     }
 
-    public int getAvailableCount() {
+    public Integer getAvailableCount() {
         return availableCount;
     }
 
-    public void setAvailableCount(int availableCount) {
+    public void setAvailableCount(Integer availableCount) {
         this.availableCount = availableCount;
     }
 
-    public int getGeneralCount() {
+    public Integer getGeneralCount() {
         return generalCount;
     }
 
-    public void setGeneralCount(int generalCount) {
+    public void setGeneralCount(Integer generalCount) {
         this.generalCount = generalCount;
     }
 }

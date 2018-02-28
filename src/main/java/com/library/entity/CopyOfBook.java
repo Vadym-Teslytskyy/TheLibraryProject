@@ -14,13 +14,13 @@ public class CopyOfBook extends AbstractEntityId {
     private List<Rent> rents;
 
     @Column(name = "is_available")
-    private boolean isAvailable;
+    private Boolean isAvailable;
 
-    public boolean isAvailable() {
+    public Boolean isAvailable() {
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         isAvailable = available;
     }
 
