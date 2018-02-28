@@ -17,7 +17,7 @@
             <p class="tagline">Pump your brain with our books</p>
             <p>
                 <a class="btn btn-default btn-lg" role="button">MORE INFO</a>
-                <a class="btn btn-action btn-lg" href="/">Show available books</a>
+                <a class="btn btn-action btn-lg" href="/">Show all books</a>
             </p>
         </div>
     </div>
