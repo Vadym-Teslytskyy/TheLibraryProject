@@ -1,5 +1,7 @@
 package com.library.model.view;
 
+import com.library.entity.Book;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,14 +21,17 @@ public class BookView {
     private Integer generalCount;
     private Double averageClientsAge;
 
+    public BookView() {
+    }
+
 //    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
 //                    List<String> collaborationAuthors, String genre, LocalDate releaseDate, String fullDescription,
 //                    Integer pagesAmount, Integer availableCount, Integer generalCount, Double averageClientsAge) {
 //        this.id = id;
 //        this.photoUrl = photoUrl;
-//        this.name = Objects.requireNonNull(name, "name");
-//        this.authorFirstName = Objects.requireNonNull(authorFirstName, "Field authorFirstName can not be null.");
-//        this.authorLastName = Objects.requireNonNull(authorLastName, "Field authorLastName can not be null.");
+//        this.name = name;
+//        this.authorFirstName = authorFirstName;
+//        this.authorLastName = authorLastName;
 //        this.collaborationAuthors = collaborationAuthors;
 //        this.genre = genre;
 //        this.releaseDate = releaseDate;
@@ -37,6 +42,25 @@ public class BookView {
 //        this.averageClientsAge = averageClientsAge;
 //    }
 
+    public BookView(Book book, Double averageAgeByBook) {
+        this.id = book.getId();
+        this.photoUrl = book.getPhotoUrl();
+        this.name = book.getName();
+        this.authorFirstName = book.getMainAuthor().getFirstName();
+        this.authorLastName = book.getMainAuthor().getLastName();
+        for (int i = 0; i < book.getCollaborationAuthors().size(); i++) {
+            String collaborationAuthorName = book.getCollaborationAuthors().get(i).getFirstName()
+                    + " " + book.getCollaborationAuthors().get(i).getLastName();
+            this.collaborationAuthors.add(i, collaborationAuthorName);
+        }
+        this.genre = book.getGenre().getGenreName();
+        this.releaseDate = book.getReleaseDate();
+        this.fullDescription = book.getFullDescription();
+        this.pagesAmount = book.getPagesAmount();
+        this.availableCount = book.getAvailableCount();
+        this.generalCount = book.getGeneralCount();
+        this.averageClientsAge = averageAgeByBook;
+    }
 
     public Integer getId() {
         return id;
@@ -110,10 +134,6 @@ public class BookView {
         this.fullDescription = fullDescription;
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     public Integer getPagesAmount() {
         return pagesAmount;
     }
@@ -144,6 +164,10 @@ public class BookView {
 
     public void setAverageClientsAge(Double averageClientsAge) {
         this.averageClientsAge = averageClientsAge;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {

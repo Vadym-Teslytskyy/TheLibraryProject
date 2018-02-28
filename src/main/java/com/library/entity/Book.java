@@ -87,14 +87,6 @@ public class Book extends AbstractEntityId {
         this.genre = genre;
     }
 
-    public String getFullDesc() {
-        return fullDescription;
-    }
-
-    public void setFullDesc(String fullDesc) {
-        this.fullDescription = fullDesc;
-    }
-
     public List<CopyOfBook> getCopiesList() {
         return copiesList;
     }
