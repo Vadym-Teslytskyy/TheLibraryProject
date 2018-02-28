@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
+import java.util.List;
+
 @Controller
 @SessionAttributes("clientComponent")
 public class RegistrationFormController {

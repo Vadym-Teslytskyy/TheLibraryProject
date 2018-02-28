@@ -1,5 +1,7 @@
 package com.library.model.view;
 
+import com.library.entity.Book;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,8 +20,25 @@ public class BookView {
     private Integer availableCount;
     private Integer generalCount;
     private Double averageClientsAge;
+    private List<String> notReturnedBooks;
+    private String usingLibraryTime;
 
-//    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
+    public List<String> getNotReturnedBooks() {
+        return notReturnedBooks;
+    }
+
+    public void setNotReturnedBooks(List<String> notReturnedBooks) {
+        this.notReturnedBooks = notReturnedBooks;
+    }
+
+    public String getUsingLibraryTime() {
+        return usingLibraryTime;
+    }
+
+    public void setUsingLibraryTime(String usingLibraryTime) {
+        this.usingLibraryTime = usingLibraryTime;
+    }
+    //    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
 //                    List<String> collaborationAuthors, String genre, LocalDate releaseDate, String fullDescription,
 //                    Integer pagesAmount, Integer availableCount, Integer generalCount, Double averageClientsAge) {
 //        this.id = id;

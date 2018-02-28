@@ -44,17 +44,12 @@
                                             path="login"/>
                             </div>
 
-                            <div class="row top-margin">
-                                <div class="col-sm-6">
-                                    <label>Password <span class="text-danger">*</span></label>
-                                    <form:input type="password" id="password" placeholder="Password"
-                                                class="form-control" path="password"/>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Confirm Password <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="top-margin">
+                                <label>Password <span class="text-danger">*</span></label>
+                                <form:input type="password" id="password" placeholder="Password"
+                                            class="form-control" path="password"/>
                             </div>
+
 
                             <div class="top-margin">
                                 <label>Birth day<span class="text-danger">*</span></label>
@@ -63,7 +58,7 @@
 
                             <div class="top-margin">
                                 <label>Phone number<span class="text-danger">*</span></label>
-                                <form:input type="text" id="phoneNumber"
+                                <form:input type="text" id="phone"
                                             placeholder="(068)111-1212" class="form-control" path="phoneNumber"/>
                             </div>
 
