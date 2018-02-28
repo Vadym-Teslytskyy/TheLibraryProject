@@ -17,5 +17,8 @@
     <definition name="registration" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
+    <definition name="clientStatistic" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/clientStatistic.jsp"/>
+    </definition>
 
 </tiles-definitions>
