@@ -1,17 +1,21 @@
 package com.library.service.impl;
 
 import com.library.entity.Book;
+import com.library.model.request.BookFamousFilterRequest;
 import com.library.repository.BookRepository;
 import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookRepository> implements BookService {
+
+    private static final LocalDateTime WEEK_AGO = LocalDateTime.now().minusWeeks(1);
+    private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
+    private static final LocalDateTime YEAR_AGO = LocalDateTime.now().minusYears(1);
 
     @Autowired
     private BookRepository bookRepository;
@@ -40,9 +44,9 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     }
 
     @Override
-    public List<Book> findReleasedDuringIndependence() {
-        List<Book> books = bookRepository.findReleasedDuringIndependence();
-        return books;
+    public Long findReleasedDuringIndependence() {
+        Long count = bookRepository.findReleasedDuringIndependence();
+        return count;
     }
 
     @Override
@@ -91,5 +95,26 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     public Book findBookByName(String bookName) {
         Book book = bookRepository.findBookByName(bookName);
         return book;
+    }
+
+    @Override
+    public List<Book> findBooksByFamousFilter(BookFamousFilterRequest request) {
+
+        if (request.getBookFamous().equals("best")) {
+            if (request.getPeriod().equals("week")) {
+                return bookRepository.findBestBooksByPeriod(WEEK_AGO, 4);
+            }
+            if (request.getPeriod().equals("year")) {
+                return bookRepository.findBestBooksByPeriod(YEAR_AGO, 4);
+            } else return bookRepository.findBestBooksByPeriod(MONTH_AGO, 4);
+        }
+        if (request.getBookFamous().equals("worst")) {
+            if (request.getPeriod().equals("week")) {
+                return bookRepository.findWorstBooksByPeriod(WEEK_AGO, 4);
+            }
+            if (request.getPeriod().equals("year")) {
+                return bookRepository.findWorstBooksByPeriod(YEAR_AGO, 4);
+            } else return bookRepository.findWorstBooksByPeriod(MONTH_AGO, 4);
+        } else return bookRepository.findAll();
     }
 }
