@@ -17,7 +17,7 @@
             <p class="tagline">Pump your brain with our books</p>
             <p>
                 <a class="btn btn-default btn-lg" role="button">MORE INFO</a>
-                <a class="btn btn-action btn-lg" href="/">Show all books</a>
+                <a class="btn btn-action btn-lg" href="/books">Show all books</a>
             </p>
         </div>
     </div>
@@ -27,6 +27,7 @@
 <!-- Intro -->
 <div class="container text-center">
     <br> <br>
+    <h2 class="thin page-header">We have ${bookAmountDuringIndep} books released during Ukraine independence</h2>
     <h2 class="thin">Best of 4 per month</h2>
     <p class="text-muted">
         The most popular choices among readers
@@ -41,18 +42,22 @@
         <div class="row">
             <c:forEach var="book" items="${books}">
 
-            <!-- BookCard  -->
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption">
-                    <h4><img src="https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1" alt="">${book.name}</h4>
-                </div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate.
-                        Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?
-                    </p>
-                </div>
-            </div>
+                <!-- BookCard -->
+                <a href="/book/${book.id}">
+                    <div class="col-md-3 col-sm-6 highlight">
+                        <div class="h-caption">
+                            <h4><img
+                                    src="https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1"
+                                    alt="">${book.name}</h4>
+                        </div>
+                        <div class="h-body text-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate.
+                                Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </c:forEach>
         </div>
         <!-- /row  -->

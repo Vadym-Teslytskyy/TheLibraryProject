@@ -55,5 +55,8 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
      * Task 9.2. Отримати середній вік читачів по певному автору
      */
     Double findAverageAgeByAuthor(int authorId);
+
+    public List<Integer> getAllClientsId();
+
 }
 

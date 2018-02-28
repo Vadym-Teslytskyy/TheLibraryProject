@@ -26,7 +26,7 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     /**
      * Task 4 Показати книги, які видані в період незалежності
      */
-    List<Book> findReleasedDuringIndependence();
+    Long findReleasedDuringIndependence();
 
     /**
      * Task 5.1. Скільки разів брали певну книжку в загальному

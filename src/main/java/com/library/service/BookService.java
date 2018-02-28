@@ -1,6 +1,7 @@
 package com.library.service;
 
 import com.library.entity.Book;
+import com.library.model.request.BookFamousFilterRequest;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +14,7 @@ public interface BookService extends CrudService<Book, Integer> {
 
     List<Book> findByCoAuthor(int coAuthorId);
 
-    List<Book> findReleasedDuringIndependence();
+    Long findReleasedDuringIndependence();
 
     Long getRentCount(int bookId);
 
@@ -30,4 +31,6 @@ public interface BookService extends CrudService<Book, Integer> {
     List<Long> findWorstCountOfRentByPeriod(LocalDateTime startDate, int resultListSize);
 
     Book findBookByName(String bookName);
+
+    List<Book> findBooksByFamousFilter(BookFamousFilterRequest request);
 }

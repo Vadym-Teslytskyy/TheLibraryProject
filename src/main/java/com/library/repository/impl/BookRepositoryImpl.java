@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.util.List;
 
@@ -51,13 +50,13 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
      * {@inheritDoc}
      */
     @Override
-    public List<Book> findReleasedDuringIndependence() {
-        String sqlQuery = "SELECT b FROM Book b JOIN FETCH b.copiesList c"
-                +" WHERE c.releaseDate BETWEEN :startDate AND :endDate";
-        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery,Book.class);
+    public Long findReleasedDuringIndependence() {
+        String sqlQuery = "SELECT COUNT(b.id) FROM Book b"
+                + " WHERE b.releaseDate BETWEEN :startDate AND :endDate";
+        TypedQuery<Long> query = getEntityManager().createQuery(sqlQuery, Long.class);
         query.setParameter("startDate", INDEPENDENCE_DAY_DATE);
         query.setParameter("endDate", LocalDate.now());
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
     /**

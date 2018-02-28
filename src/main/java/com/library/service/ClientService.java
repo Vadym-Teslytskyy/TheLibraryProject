@@ -57,4 +57,6 @@ public interface ClientService extends CrudService<Client, Integer> {
     Double findAverageAgeByAuthor(int authorId);
 
     void save(ClientRequest clientRequest);
+
+    public List<Integer> getAllClientsId();
 }

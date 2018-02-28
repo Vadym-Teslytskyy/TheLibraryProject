@@ -34,22 +34,20 @@
                 ${clientsBooks.name}
             </c:forEach>
         </td>
+        <td>
+            <c:forEach var="notReturnedBooks" items="${client.readBooks}">
+                ${clientsBooks.name}
+            </c:forEach>
+        </td>
+        <td>
+            <c:forEach var="usingTimeU" items="${usingTime}">
+                ${usingTimeU}
+            </c:forEach>
+        </td>
     </tr>
+
     </c:forEach>
     </tbody>
 </table>
 
 
-<%--<c:forEach var="order" items="${orders.content}">--%>
-    <%--<tr>--%>
-        <%--<td class="text-center">--%>
-            <%--<p>${order.time}</p>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-            <%--<c:forEach var="orderedMeal" items="${order.meals}">--%>
-                <%--<img src="${orderedMeal.photoUrl}?version=${orderedMeal.version}" style="height: 50px">${orderedMeal.name}--%>
-            <%--</c:forEach>--%>
-        <%--</td>--%>
-        <%--<td class="text-center">${order.status}</td>--%>
-    <%--</tr>--%>
-<%--</c:forEach>--%>
