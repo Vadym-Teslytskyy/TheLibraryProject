@@ -134,4 +134,11 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         query.setParameter(1, authorId);
         return query.getSingleResult();
     }
+
+    @Override
+    public List<Integer> getAllClientsId() {
+        String sql = "SELECT client.id from Client client";
+        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
+        return query.getResultList();
+    }
 }

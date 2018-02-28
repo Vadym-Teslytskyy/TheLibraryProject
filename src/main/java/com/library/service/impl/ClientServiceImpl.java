@@ -2,6 +2,7 @@ package com.library.service.impl;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
+import com.library.entity.clientbuilder.RegisteredClient;
 import com.library.model.request.ClientRequest;
 import com.library.repository.ClientRepository;
 import com.library.service.ClientService;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class ClientServiceImpl extends CrudServiceImpl <Client, Integer, ClientRepository> implements ClientService{
+public class ClientServiceImpl extends CrudServiceImpl<Client, Integer, ClientRepository> implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -72,14 +73,13 @@ public class ClientServiceImpl extends CrudServiceImpl <Client, Integer, ClientR
     @Override
     @Transactional
     public void save(ClientRequest clientRequest) {
-        Client client = new Client();
-        client.setId(clientRequest.getId());
-        client.setFirstName(clientRequest.getFirstName());
-        client.setLastName(clientRequest.getLastName());
-        client.setLogin(clientRequest.getLogin());
-        client.setPassword(clientRequest.getPassword());
-        client.setHomeAddress(clientRequest.getHomeAdress());
-        client.setPhoneNumber(clientRequest.getPhoneNumber());
-        getRepository().save(client);
+        RegisteredClient registeredClient = new RegisteredClient(clientRequest);
+        registeredClient.buildRegisteredClient();
+        getRepository().save(registeredClient.getClient());
+    }
+
+    @Override
+    public List<Integer> getAllClientsId() {
+        return getRepository().getAllClientsId();
     }
 }
