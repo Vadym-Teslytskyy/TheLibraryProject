@@ -1,13 +1,15 @@
 package com.library.controller;
 
+import com.library.model.request.ClientRequest;
 import com.library.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
+@SessionAttributes("clientComponent")
 public class RegistrationFormController {
 
     private final ClientService clientService;
@@ -27,19 +29,21 @@ public class RegistrationFormController {
         return "registrationForm";
     }
 
+    @ModelAttribute("clientComponent")
+    public ClientRequest getForm() {
+        return new ClientRequest();
+    }
 
-//    @PostMapping
-//    public String save(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String login, @RequestParam String birthDate, @RequestParam String password, @RequestParam String phoneNumber, @RequestParam String homeAdress) {
-//        Client client = new Client();
-//        client.setFirstName(firstName);
-//        client.setFirstName(lastName);
-//        client.setFirstName(login);
-////        client.setFirstName(birthDate);
-//        client.setFirstName(password);
-//        client.setFirstName(phoneNumber);
-//        client.setFirstName(homeAdress);
-//        clientService.save(client);
-//        return "redirect:/registrationForm";
-//    }
+    @PostMapping
+    public String save(@ModelAttribute("clientComponent") ClientRequest request, SessionStatus status) {
+        clientService.save(request);
+        return cancel(status);
+    }
+
+    @GetMapping("/cancel")
+    public String cancel(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/registrationForm";
+    }
 
 }
