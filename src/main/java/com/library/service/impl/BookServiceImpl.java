@@ -1,12 +1,15 @@
 package com.library.service.impl;
 
 import com.library.entity.Book;
+import com.library.entity.bookbuilder.BookBuider;
+import com.library.entity.bookbuilder.RegisteredBook;
+import com.library.model.request.BookRequest;
 import com.library.repository.BookRepository;
 import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -91,5 +94,13 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     public Book findBookByName(String bookName) {
         Book book = bookRepository.findBookByName(bookName);
         return book;
+    }
+
+//    @Override
+    @Transactional
+    public void save(BookRequest bookRequest) {
+        BookBuider bookBuider = new RegisteredBook(bookRequest);
+        bookBuider.buildBook();
+        getRepository().save(bookBuider.getBook());
     }
 }

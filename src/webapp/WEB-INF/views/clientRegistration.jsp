@@ -27,7 +27,7 @@
                                 href="/signin">Login</a> Else please enter the fields below. </p>
                         <hr>
 
-                        <form:form action="/registration" method="POST" modelAttribute="clientComponent">
+                        <form:form action="/clientRegistration" method="POST" modelAttribute="newClientComponent">
                             <div class="top-margin">
                                 <label>First Name</label>
                                 <form:input type="text" id="firstName" placeholder="First Name" class="form-control"

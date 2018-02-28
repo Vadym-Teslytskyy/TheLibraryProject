@@ -11,13 +11,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import java.util.List;
 
 @Controller
-@SessionAttributes("clientComponent")
-public class RegistrationFormController {
+@SessionAttributes("newClientComponent")
+public class ClientRegistrationController {
 
     private final ClientService clientService;
 
     @Autowired
-    public RegistrationFormController(ClientService clientService) {
+    public ClientRegistrationController(ClientService clientService) {
         this.clientService = clientService;
     }
 
@@ -26,26 +26,26 @@ public class RegistrationFormController {
         return "signIn";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/clientRegistration")
     public String getRegistrationPage(Model model) {
-        return "registration";
+        return "clientRegistration";
     }
 
-    @ModelAttribute("clientComponent")
+    @ModelAttribute("newClientComponent")
     public ClientRequest getForm() {
         return new ClientRequest();
     }
 
-    @PostMapping("/registration")
-    public String save(@ModelAttribute("clientComponent") ClientRequest request, SessionStatus status) {
+    @PostMapping("/clientRegistration")
+    public String save(@ModelAttribute("newClientComponent") ClientRequest request, SessionStatus status) {
         clientService.save(request);
         return cancel(status);
     }
 
-    @GetMapping("/cancel")
+    @GetMapping("/cleanClientFields")
     public String cancel(SessionStatus status) {
         status.setComplete();
-        return "redirect:/registration";
+        return "redirect:/clientRegistration";
     }
 
 }

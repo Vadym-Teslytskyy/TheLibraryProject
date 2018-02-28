@@ -1,6 +1,8 @@
 package com.library.service;
 
 import com.library.entity.Book;
+import com.library.model.request.BookRequest;
+import com.library.model.request.ClientRequest;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,4 +32,6 @@ public interface BookService extends CrudService<Book, Integer> {
     List<Long> findWorstCountOfRentByPeriod(LocalDateTime startDate, int resultListSize);
 
     Book findBookByName(String bookName);
+
+//    void save(BookRequest bookRequest);
 }
