@@ -17,5 +17,8 @@
     <definition name="registration" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
+    <definition name="bookFilter" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/bookFilter.jsp"/>
+    </definition>
 
 </tiles-definitions>
