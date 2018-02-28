@@ -15,10 +15,10 @@ public class Author extends AbstractEntityId {
     @ManyToMany(mappedBy = "collaborationAuthors")
     private List<Book> collaborationBooks;
 
-    @Column(name = "first_name", length = 20)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", length = 20)
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "photo_url")
