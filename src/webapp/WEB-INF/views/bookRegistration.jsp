@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <header id="head" class="secondary"></header>
 <!-- container -->
 <div class="container">
@@ -29,21 +29,21 @@
                         <form:form action="/bookRegistration" method="POST" modelAttribute="newBookComponent">
                             <div class="top-margin">
                                 <label>Book Title</label>
-                                <form:input type="text" id="bookTitle" placeholder="Book Title" class="form-control"
+                                <form:input type="text" id="name" placeholder="Book Title" class="form-control"
                                             path="name"/>
                             </div>
-                            <%--<div class="top-margin">--%>
-                                <%--<label>Main Author First Name</label>--%>
-                                <%--<form:input type="text" id="mainAuthorFirstName" placeholder="Main Author First Name"--%>
-                                            <%--class="form-control"--%>
-                                            <%--path="mainAuthorFirstName"/>--%>
-                            <%--</div>--%>
-                            <%--<div class="top-margin">--%>
-                                <%--<label>Main Author Last Name<span class="text-danger">*</span></label>--%>
-                                <%--<form:input type="text" id="mainAuthorLastName" placeholder="Main Author Last Name"--%>
-                                            <%--class="form-control"--%>
-                                            <%--path="mainAuthorLastName"/>--%>
-                            <%--</div>--%>
+                            <div class="top-margin">
+                                <label>Main Author First Name</label>
+                                <form:input type="text" id="mainAuthorFirstName" placeholder="Main Author First Name"
+                                            class="form-control"
+                                            path="mainAuthorFirstName"/>
+                            </div>
+                            <div class="top-margin">
+                                <label>Main Author Last Name<span class="text-danger">*</span></label>
+                                <form:input type="text" id="mainAuthorLastName" placeholder="Main Author Last Name"
+                                            class="form-control"
+                                            path="mainAuthorLastName"/>
+                            </div>
 
                             <div class="top-margin">
                                 <label>Releade Date<span class="text-danger">*</span></label>
@@ -56,11 +56,29 @@
                                             placeholder="General Count" class="form-control" path="generalCount"/>
                             </div>
 
-                            <%--<div class="top-margin">--%>
-                                <%--<label>Genre<span class="text-danger">*</span></label>--%>
-                                <%--<form:input type="text" id="genre" placeholder="Genre" class="form-control"--%>
-                                            <%--path="genre"/>--%>
-                            <%--</div>--%>
+                            <div class="top-margin">
+                                <label>Genre<span class="text-danger">*</span></label>
+                                <form:input type="text" id="genre" placeholder="Genre" class="form-control"
+                                            path="genre"/>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Photo url<span class="text-danger">*</span></label>
+                                <form:input type="text" id="photoUrl" placeholder="Photo url" class="form-control"
+                                            path="photoUrl"/>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Pages Amount<span class="text-danger">*</span></label>
+                                <form:input type="text" id="pagesAmount" placeholder="Pages Amount" class="form-control"
+                                            path="pagesAmount"/>
+                            </div>
+
+                            <div class="top-margin">
+                                <label>Full Rescription<span class="text-danger">*</span></label>
+                                <form:input type="text" id="photoUrl" placeholder="Full Rescription" class="form-control"
+                                            path="fullDescription"/>
+                            </div>
 
                             <hr>
 

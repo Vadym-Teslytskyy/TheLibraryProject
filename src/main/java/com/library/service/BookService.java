@@ -33,7 +33,7 @@ public interface BookService extends CrudService<Book, Integer> {
 
     Book findBookByName(String bookName);
 
-//    void save(BookRequest bookRequest);
+    void save(BookRequest bookRequest);
 
     List<Book> findBooksByFamousFilter(BookFamousFilterRequest request);
 
