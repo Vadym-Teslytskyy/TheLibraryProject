@@ -33,10 +33,10 @@
                 <a href="/author/${author.id}">
                     <div class="col-md-3 col-sm-6 highlight">
                         <div class="h-caption">
-                            <h4><img
+                            <h3><img
                                     src="/resources/images/author_previews/${author.photoUrl}"
                                     alt="">${author.firstName} ${author.lastName}
-                            </h4>
+                            </h3>
                         </div>
                         <div class="h-body text-center">
                             <h5 style="color:black">

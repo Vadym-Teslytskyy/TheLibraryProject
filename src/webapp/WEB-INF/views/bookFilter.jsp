@@ -29,19 +29,25 @@
     <div class="container">
         <div class="row">
             <c:forEach var="book" items="${books}">
-
                 <!-- BookCard -->
                 <a href="/book/${book.id}">
                     <div class="col-md-3 col-sm-6 highlight">
                         <div class="h-caption">
-                            <h4><img
-                                    src=<%--${book.photoUrl}--%>"https://i2.wp.com/365webresources.com/wp-content/uploads/2017/11/Paperback-Book-Mockup-PSD-Templates.png?resize=544%2C405&ssl=1"
-                                    alt="">${book.name}</h4>
+                            <h3>
+                                <img src="/resources/images/book_previews/${book.photoUrl}"
+                                     alt="">${book.name}
+                            </h3>
                         </div>
                         <div class="h-body text-center">
-                            <p>
-                                Name: ${book.name}
-                            </p>
+                            <h5 style="color:black">
+                                <p>Author: ${book.mainAuthor.firstName} ${book.mainAuthor.lastName}</p>
+                                <p>Genre: ${book.genre.genreName}</p>
+                                <p>
+                                    <c:if test="${book.availableCount > 0}">
+                                        ${book.availableCount} books are available
+                                    </c:if>
+                                </p>
+                            </h5>
                         </div>
                     </div>
                 </a>
