@@ -1,7 +1,7 @@
 package com.library.repository.impl;
 
 import com.library.entity.Book;
-import com.library.entity.CopyOfBook;
+import com.library.entity.BookCopy;
 import com.library.entity.Rent;
 import com.library.model.filter.BookFilter;
 import com.library.repository.BookRepository;
@@ -20,9 +20,6 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         implements BookRepository {
 
     private static final LocalDate INDEPENDENCE_DAY_DATE = LocalDate.of(1991, Month.AUGUST, 24);
-    private static final LocalDateTime WEEK_AGO = LocalDateTime.now().minusWeeks(1);
-    private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
-    private static final LocalDateTime YEAR_AGO = LocalDateTime.now().minusYears(1);
 
     @Override
     public Book findAvailableBookById(int bookId) {
@@ -178,9 +175,9 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
 
         Root<Rent> root = criteriaQuery.from(Rent.class);
 
-        Join<Rent, CopyOfBook> copyJoin = root.join("copyOfBook");
+        Join<Rent, BookCopy> copyJoin = root.join("copyOfBook");
 
-        Join<CopyOfBook, Book> bookJoin = copyJoin.join("book");
+        Join<BookCopy, Book> bookJoin = copyJoin.join("book");
 
         criteriaQuery.select(bookJoin);
 
@@ -190,34 +187,41 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (filter.getBookFamous().equals("best")) {
-            criteriaQuery.orderBy(criteriaBuilder.desc(criteriaBuilder.count(root.get("id"))));
-            bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+        if (filter.getBookFamous() != null) {
+            if (filter.getBookFamous().equals("best")) {
+                criteriaQuery.orderBy(criteriaBuilder.desc(criteriaBuilder.count(root.get("id"))));
+                bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+            }
+            if (filter.getBookFamous().equals("worst")) {
+                criteriaQuery.orderBy(criteriaBuilder.asc(criteriaBuilder.count(root.get("id"))));
+                bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+            }
         }
-        if (filter.getBookFamous().equals("worst")) {
-            criteriaQuery.orderBy(criteriaBuilder.asc(criteriaBuilder.count(root.get("id"))));
-            bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+        if (filter.getBookName() != null){
+            predicates.add(
+                    criteriaBuilder.and(criteriaBuilder.like(bookJoin.get("name"), filter.getBookName() + "%")));
+        }else {
+
         }
-        return null;
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        List<Book> resultList = getEntityManager().createQuery(criteriaQuery).getResultList();
+        return resultList;
     }
 
     private void bookPeriodCheckPredicateMaking(CriteriaBuilder criteriaBuilder, Root root, String period, List<Predicate> predicates) {
         if (period.equals("week")) {
             predicates.add(criteriaBuilder.and(
-                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), WEEK_AGO)));
-            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now().minusWeeks(1)),
                     criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
         }
         if (period.equals("month")) {
             predicates.add(criteriaBuilder.and(
-                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), MONTH_AGO)));
-            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now().minusMonths(1)),
                     criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
         }
         if (period.equals("year")) {
             predicates.add(criteriaBuilder.and(
-                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), YEAR_AGO)));
-            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now().minusYears(1)),
                     criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
         }
     }

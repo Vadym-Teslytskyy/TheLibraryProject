@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import com.library.entity.Book;
+import com.library.model.filter.BookFilter;
 import com.library.model.request.BookFilterRequest;
 import com.library.model.view.BookView;
 import com.library.service.BookService;
@@ -44,8 +45,7 @@ public class BookController {
 
     @GetMapping("/books/filter")
     public String showBooksByFilter(Model model, @ModelAttribute("filter") BookFilterRequest request) {
-        model.addAttribute("books", bookService.findBooksByFamousFilter(request));
-
+        model.addAttribute("books", bookService.findBooksByFilter(BookFilter.parseRequest(request)));
         return "bookFilter";
     }
 

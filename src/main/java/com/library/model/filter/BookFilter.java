@@ -17,7 +17,7 @@ public class BookFilter {
         this.bookName = bookName;
     }
 
-    public static BookFilter of(BookFilterRequest request) {
+    public static BookFilter parseRequest(BookFilterRequest request) {
         return new BookFilter(
                 request.getBookFamous(),
                 request.getPeriod(),

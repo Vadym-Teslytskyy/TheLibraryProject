@@ -3,7 +3,7 @@ package com.library.service.impl;
 import com.library.entity.Book;
 import com.library.entity.bookbuilder.BookBuider;
 import com.library.entity.bookbuilder.RegisteredBook;
-import com.library.model.request.BookFilterRequest;
+import com.library.model.filter.BookFilter;
 import com.library.model.request.BookRequest;
 import com.library.repository.BookRepository;
 import com.library.service.BookService;
@@ -111,24 +111,7 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     }
 
     @Override
-    public List<Book> findBooksByFamousFilter(BookFilterRequest request) {
-
-        if (request.getBookFamous().equals("best")) {
-            if (request.getPeriod().equals("week")) {
-                return bookRepository.findBestBooksByPeriod(WEEK_AGO, 4);
-            }
-            if (request.getPeriod().equals("year")) {
-                return bookRepository.findBestBooksByPeriod(YEAR_AGO, 4);
-            } else return bookRepository.findBestBooksByPeriod(MONTH_AGO, 4);
-        }
-        if (request.getBookFamous().equals("worst")) {
-            if (request.getPeriod().equals("week")) {
-                return bookRepository.findWorstBooksByPeriod(WEEK_AGO, 4);
-            }
-            if (request.getPeriod().equals("year")) {
-                return bookRepository.findWorstBooksByPeriod(YEAR_AGO, 4);
-            } else return bookRepository.findWorstBooksByPeriod(MONTH_AGO, 4);
-        } else return bookRepository.findAll();
-
+    public List<Book> findBooksByFilter(BookFilter filter) {
+        return bookRepository.findBooksByFilter(filter);
     }
 }

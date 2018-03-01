@@ -8,18 +8,27 @@
     <h4 class="thin">You can find best or worst of 4 books by period</h4>
     <form:form action="/books/filter" method="GET" modelAttribute="filter">
         <label>Choose books famous: </label>
-        <form:radiobutton path="bookFamous" value="best" label="Best books" checked="checked"/>
-        <form:radiobutton path="bookFamous" value="worst" label="Worst books"/>
-        <div class="row">
+        <form:radiobutton path="bookFamous" value="best" label="Best books"/>
+        <form:radiobutton path="bookFamous" value="worst" label="Worst books" cssClass="page-header"/>
+        <div class="row page-header">
             <div class="col-md-6 col-md-offset-3">
                 <label>Choose period: </label>
-                <form:radiobutton path="period" value="week" label="Week" checked="checked"/>
+                <form:radiobutton path="period" value="week" label="Week"/>
                 <form:radiobutton path="period" value="month" label="Month"/>
-                <form:radiobutton path="period" value="year" label="Year"/>
+                <form:radiobutton path="period" value="year" label="Year" cssClass="page-header"/>
+                <form:input type="text" placeholder="Enter book name" class="form-control"
+                            path="bookName"/>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-sm-3 col-sm-offset-3">
+                <button class="btn btn-action" type="submit">Find</button>
+            </div>
+            <div class="col-sm-3">
+                <a class="btn btn-primary" href="/books/cancel">Cancel</a>
             </div>
         </div>
-        <label></label>
-        <button class="btn btn-action" type="submit">Find</button>
     </form:form>
 </div>
 <!-- /Intro-->
