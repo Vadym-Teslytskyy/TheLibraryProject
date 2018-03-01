@@ -10,6 +10,7 @@ public class BookRequest {
     private String name;
     private String mainAuthorFirstName;
     private String mainAuthorLastName;
+    private String author;
     private String releaseDate;
     private Integer generalCount;
     private String genre;
@@ -95,5 +96,13 @@ public class BookRequest {
 
     public void setPagesAmount(Integer pagesAmount) {
         this.pagesAmount = pagesAmount;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
