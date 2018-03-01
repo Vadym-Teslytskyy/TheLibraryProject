@@ -3,8 +3,8 @@ package com.library.service.impl;
 import com.library.entity.Book;
 import com.library.entity.bookbuilder.BookBuider;
 import com.library.entity.bookbuilder.RegisteredBook;
+import com.library.model.request.BookFilterRequest;
 import com.library.model.request.BookRequest;
-import com.library.model.request.BookFamousFilterRequest;
 import com.library.repository.BookRepository;
 import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,7 +111,7 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     }
 
     @Override
-    public List<Book> findBooksByFamousFilter(BookFamousFilterRequest request) {
+    public List<Book> findBooksByFamousFilter(BookFilterRequest request) {
 
         if (request.getBookFamous().equals("best")) {
             if (request.getPeriod().equals("week")) {

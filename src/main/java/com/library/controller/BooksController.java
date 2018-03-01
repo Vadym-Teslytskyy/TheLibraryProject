@@ -1,7 +1,7 @@
 package com.library.controller;
 
 import com.library.entity.Book;
-import com.library.model.request.BookFamousFilterRequest;
+import com.library.model.request.BookFilterRequest;
 import com.library.model.view.BookView;
 import com.library.service.BookService;
 import com.library.service.ClientService;
@@ -30,8 +30,8 @@ public class BooksController {
     }
 
     @ModelAttribute("filter")
-    public BookFamousFilterRequest getRequest() {
-        return new BookFamousFilterRequest();
+    public BookFilterRequest getRequest() {
+        return new BookFilterRequest();
     }
 
     @RequestMapping("/")
@@ -43,7 +43,7 @@ public class BooksController {
 
 
     @GetMapping("/books/filter")
-    public String showBooksByFilter(Model model, @ModelAttribute("filter") BookFamousFilterRequest request) {
+    public String showBooksByFilter(Model model, @ModelAttribute("filter") BookFilterRequest request) {
         model.addAttribute("books", bookService.findBooksByFamousFilter(request));
 
         return "bookFilter";

@@ -1,26 +1,34 @@
 package com.library.repository.impl;
 
 import com.library.entity.Book;
-import com.library.model.view.BookIndexView;
+import com.library.entity.CopyOfBook;
+import com.library.entity.Rent;
+import com.library.model.filter.BookFilter;
 import com.library.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         implements BookRepository {
+
     private static final LocalDate INDEPENDENCE_DAY_DATE = LocalDate.of(1991, Month.AUGUST, 24);
+    private static final LocalDateTime WEEK_AGO = LocalDateTime.now().minusWeeks(1);
+    private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
+    private static final LocalDateTime YEAR_AGO = LocalDateTime.now().minusYears(1);
 
     @Override
     public Book findAvailableBookById(int bookId) {
         String sqlQuery = "SELECT b from Book b WHERE (b.id = ?1 and b.availableCount > 0)";
-        TypedQuery<Book> query= getEntityManager().createQuery(sqlQuery, Book.class);
-        query.setParameter(1,bookId);
+        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
+        query.setParameter(1, bookId);
         return query.getSingleResult();
     }
 
@@ -65,8 +73,8 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
     @Override
     public Long getRentCount(int bookId) {
         String sqlQuery = "SELECT COUNT(r.copyOfBook.id) FROM Rent r JOIN r.copyOfBook c JOIN c.book b WHERE b.id = ?1";
-        TypedQuery<Long> query= getEntityManager().createQuery(sqlQuery,Long.class);
-        query.setParameter(1,bookId);
+        TypedQuery<Long> query = getEntityManager().createQuery(sqlQuery, Long.class);
+        query.setParameter(1, bookId);
         return query.getSingleResult();
     }
 
@@ -78,7 +86,7 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         String sqlQuery = "SELECT COUNT(c.id) FROM Rent r JOIN r.copyOfBook c JOIN c.book b"
                 + " WHERE b.id = ?1 GROUP BY b.id";
         TypedQuery<Long> query = getEntityManager().createQuery(sqlQuery, Long.class);
-        query.setParameter(1,bookId);
+        query.setParameter(1, bookId);
         return query.getSingleResult();
     }
 
@@ -91,35 +99,10 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         String sqlQuery = "SELECT AVG (DATEDIFF(r.returnTime, r.borrowingTime)) FROM Rent r"
                 + " JOIN r.copyOfBook c JOIN c.book b WHERE b.id = ?1 AND r.returnTime IS NOT NULL";
         TypedQuery<Double> query = getEntityManager().createQuery(sqlQuery, Double.class);
-        query.setParameter(1,bookId);
+        query.setParameter(1, bookId);
         return query.getSingleResult();
     }
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Book> findBestBooksByPeriod(LocalDateTime startDate, int resultListSize) {
-        String sqlQuery = "SELECT b FROM Rent r JOIN r.copyOfBook c JOIN c.book b"
-                + " WHERE r.borrowingTime BETWEEN :startDate AND :endDate GROUP BY b.id ORDER BY COUNT(r.id) DESC";
-        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
-        query.setParameter("startDate", startDate)
-                .setParameter("endDate", LocalDateTime.now())
-                .setMaxResults(resultListSize);
-        return query.getResultList();
-    }
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Book> findWorstBooksByPeriod(LocalDateTime startDate, int resultListSize) {
-        String sqlQuery = "SELECT b FROM Rent r JOIN r.copyOfBook c JOIN c.book b"
-                + " WHERE r.borrowingTime BETWEEN :startDate AND :endDate GROUP BY b.id ORDER BY COUNT(r.id) ASC";
-        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
-        query.setParameter("startDate", startDate)
-                .setParameter("endDate", LocalDateTime.now())
-                .setMaxResults(resultListSize);
-        return query.getResultList();
-    }
+
     /**
      * {@inheritDoc}
      */
@@ -133,6 +116,7 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
                 .setMaxResults(resultListSize);
         return query.getResultList();
     }
+
     /**
      * {@inheritDoc}
      */
@@ -158,12 +142,83 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         query.setParameter(1, bookName);
         return query.getSingleResult();
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<BookIndexView> findAllAvailableBookIndexViews() {
-        String sqlQuery = "SELECT new com.library.model.view.BookIndexView"
-                +"( b.id, b.name, a.firstName, a.lastName, g.genreName, b.photoUrl, b.availableCount) "
-                    +"FROM Book b JOIN b.genre g JOIN b.mainAuthor a WHERE (b.id = ?1 and b.availableCount > 0)";
-        TypedQuery<BookIndexView> query = getEntityManager().createQuery(sqlQuery, BookIndexView.class);
+    public List<Book> findBestBooksByPeriod(LocalDateTime startDate, int resultListSize) {
+        String sqlQuery = "SELECT b FROM Rent r JOIN r.copyOfBook c JOIN c.book b"
+                + " WHERE r.borrowingTime BETWEEN :startDate AND :endDate GROUP BY b.id ORDER BY COUNT(r.id) DESC";
+        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
+        query.setParameter("startDate", startDate)
+                .setParameter("endDate", LocalDateTime.now())
+                .setMaxResults(resultListSize);
         return query.getResultList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Book> findWorstBooksByPeriod(LocalDateTime startDate, int resultListSize) {
+        String sqlQuery = "SELECT b FROM Rent r JOIN r.copyOfBook c JOIN c.book b"
+                + " WHERE r.borrowingTime BETWEEN :startDate AND :endDate GROUP BY b.id ORDER BY COUNT(r.id) ASC";
+        TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
+        query.setParameter("startDate", startDate)
+                .setParameter("endDate", LocalDateTime.now())
+                .setMaxResults(resultListSize);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Book> findBooksByFilter(BookFilter filter) {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
+
+        Root<Rent> root = criteriaQuery.from(Rent.class);
+
+        Join<Rent, CopyOfBook> copyJoin = root.join("copyOfBook");
+
+        Join<CopyOfBook, Book> bookJoin = copyJoin.join("book");
+
+        criteriaQuery.select(bookJoin);
+
+        criteriaQuery.groupBy(bookJoin.get("id"));
+
+        String period = filter.getPeriod();
+
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (filter.getBookFamous().equals("best")) {
+            criteriaQuery.orderBy(criteriaBuilder.desc(criteriaBuilder.count(root.get("id"))));
+            bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+        }
+        if (filter.getBookFamous().equals("worst")) {
+            criteriaQuery.orderBy(criteriaBuilder.asc(criteriaBuilder.count(root.get("id"))));
+            bookPeriodCheckPredicateMaking(criteriaBuilder, root, period, predicates);
+        }
+        return null;
+    }
+
+    private void bookPeriodCheckPredicateMaking(CriteriaBuilder criteriaBuilder, Root root, String period, List<Predicate> predicates) {
+        if (period.equals("week")) {
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), WEEK_AGO)));
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
+        }
+        if (period.equals("month")) {
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), MONTH_AGO)));
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
+        }
+        if (period.equals("year")) {
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("borrowingTime"), YEAR_AGO)));
+            predicates.add(criteriaBuilder.and(
+                    criteriaBuilder.lessThanOrEqualTo(root.get("borrowingTime"), LocalDateTime.now())));
+        }
     }
 }
