@@ -14,8 +14,14 @@
     <definition name="signIn" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/signIn.jsp"/>
     </definition>
-    <definition name="registration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
+    <definition name="clientRegistration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/clientRegistration.jsp"/>
+    </definition>
+    <definition name="bookRegistration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/bookRegistration.jsp"/>
+    </definition>
+    <definition name="genreRegistration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/genreRegistration.jsp"/>
     </definition>
     <definition name="clientStatistic" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/clientStatistic.jsp"/>
