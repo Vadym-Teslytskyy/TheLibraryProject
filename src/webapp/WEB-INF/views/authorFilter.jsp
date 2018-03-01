@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 01.03.2018
-  Time: 1:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
@@ -36,26 +29,26 @@
     <div class="container">
         <div class="row">
             <c:forEach var="author" items="${authors}">
-
-                <!-- BookCard -->
+                <!-- Card -->
                 <a href="/author/${author.id}">
                     <div class="col-md-3 col-sm-6 highlight">
                         <div class="h-caption">
                             <h4><img
-                                    src=<%--${book.photoUrl}--%>"https://pmcdeadline2.files.wordpress.com/2017/02/rexfeatures_292491a-e1486097324892.jpg?w=605"
-                                    alt="">${author.firstName} ${author.lastName}</h4>
+                                    src="/resources/images/author_previews/${author.photoUrl}"
+                                    alt="">${author.firstName} ${author.lastName}
+                            </h4>
                         </div>
                         <div class="h-body text-center">
-                            <p>
-                                Country: ${author.country}
-                            </p>
+                            <h5 style="color:black">
+                                <p>Country: ${author.country}</p>
+                                <p>Birth year: ${author.birthDate.year}</p>
+                            </h5>
                         </div>
                     </div>
                 </a>
             </c:forEach>
         </div>
         <!-- /row  -->
-
     </div>
 </div>
 <!-- /Highlights -->

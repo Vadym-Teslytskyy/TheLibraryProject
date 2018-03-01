@@ -48,9 +48,15 @@
                                  data-parent="#accordion">
                                 <div class="card-body">
                                     <table class="table table-bordered">
+                                        <c:set var="anyBookHasCoAuthors" scope="request" value="false"/>
+                                        <c:forEach var="book" items="${authorView.books}">
+                                            <c:if test="${!empty book.collaborationAuthors}">
+                                                <c:set var="anyBookHasCoAuthors" value="true"/>
+                                            </c:if>
+                                        </c:forEach>
                                         <tr>
                                             <th class="text-center">Book name</th>
-                                            <c:if test="${!empty book.collaborationAuthors}">
+                                            <c:if test="${anyBookHasCoAuthors}">
                                                 <th class="text-center">Co-authors</th>
                                             </c:if>
                                             <th class="text-center">Genre</th>
@@ -62,7 +68,7 @@
                                                 <td class="text-center">
                                                     <a href="/book/${book.id}">${book.name}</a>
                                                 </td>
-                                                <c:if test="${!empty book.collaborationAuthors}">
+                                                <c:if test="${anyBookHasCoAuthors}">
                                                     <td class="text-center">
                                                         <c:forEach var="author" items="${book.collaborationAuthors}">
                                                             <a href="/author/${author.id}">
