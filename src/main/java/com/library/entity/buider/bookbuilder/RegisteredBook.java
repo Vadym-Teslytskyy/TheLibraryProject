@@ -1,5 +1,6 @@
 package com.library.entity.buider.bookbuilder;
 
+import com.library.entity.Author;
 import com.library.entity.Book;
 import com.library.entity.Genre;
 import com.library.model.request.BookRequest;
@@ -18,8 +19,11 @@ public class RegisteredBook extends BookBuilder {
     public void buid() {
         Genre genre = new Genre();
         genre.setId(Integer.valueOf(bookRequest.getGenre()));
+        Author author = new Author();
+        author.setId(Integer.valueOf(bookRequest.getAuthor()));
         createNewBook();
         book.setGenre(genre);
+        book.setMainAuthor(author);
         book.setName(bookRequest.getName());
         book.setPhotoUrl(bookRequest.getPhotoUrl());
         book.setGeneralCount(bookRequest.getGeneralCount());
