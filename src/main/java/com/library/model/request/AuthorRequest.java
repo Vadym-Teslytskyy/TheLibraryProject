@@ -56,4 +56,6 @@ public class AuthorRequest {
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
     }
+
+
 }

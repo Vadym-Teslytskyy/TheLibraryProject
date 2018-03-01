@@ -1,8 +1,8 @@
 package com.library.service.impl;
 
 import com.library.entity.Author;
-import com.library.entity.builder.ClassBuider;
-import com.library.entity.builder.authorbuider.RegisteredAuthor;
+import com.library.entity.buider.ClassBuilder;
+import com.library.entity.buider.authorbuilder.RegisteredAuthor;
 import com.library.model.request.AuthorRequest;
 import com.library.repository.AuthorRepository;
 import com.library.service.AuthorService;
@@ -31,7 +31,7 @@ public class AuthorServiceImpl extends CrudServiceImpl<Author, Integer, AuthorRe
     @Override
     @Transactional
     public void save(AuthorRequest authorRequest) {
-        ClassBuider<Author> classBuider = new RegisteredAuthor(authorRequest);
+        ClassBuilder<Author> classBuider = new RegisteredAuthor(authorRequest);
         classBuider.buid();
         getRepository().save(classBuider.getInstance());
     }

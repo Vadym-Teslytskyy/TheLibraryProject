@@ -2,6 +2,8 @@ package com.library.service.impl;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
+import com.library.entity.buider.ClassBuilder;
+import com.library.entity.buider.clientbuilder.RegisteredClient;
 import com.library.entity.builder.ClassBuider;
 import com.library.entity.builder.clientbuilder.RegisteredClient;
 import com.library.model.request.ClientRequest;
@@ -79,7 +81,7 @@ public class ClientServiceImpl extends CrudServiceImpl<Client, Integer, ClientRe
     @Override
     @Transactional
     public void save(ClientRequest clientRequest) {
-        ClassBuider<Client> clientClassBuider = new RegisteredClient(clientRequest);
+        ClassBuilder<Client> clientClassBuider = new RegisteredClient(clientRequest);
         clientClassBuider.buid();
         getRepository().save(clientClassBuider.getInstance());
     }
