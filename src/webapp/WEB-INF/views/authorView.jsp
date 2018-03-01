@@ -30,9 +30,7 @@
             </header>
 
             <blockquote>
-                Some description here! Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum,
-                ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi
-                facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.
+                ${authorView.shortBiography}
             </blockquote>
 
             <div class="row">
@@ -52,7 +50,9 @@
                                     <table class="table table-bordered">
                                         <tr>
                                             <th class="text-center">Book name</th>
-                                            <th class="text-center">Co-authors</th>
+                                            <c:if test="${!empty book.collaborationAuthors}">
+                                                <th class="text-center">Co-authors</th>
+                                            </c:if>
                                             <th class="text-center">Genre</th>
                                             <th class="text-center">Release year</th>
                                             <th class="text-center">Available count</th>
@@ -71,7 +71,6 @@
                                                         </c:forEach>
                                                     </td>
                                                 </c:if>
-
                                                 <td class="text-center">${book.genre.genreName}</td>
                                                 <td class="text-center">${book.releaseDate.year}</td>
                                                 <td class="text-center">${book.availableCount}</td>
