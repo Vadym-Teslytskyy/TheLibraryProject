@@ -31,7 +31,7 @@
                 </h4>
 
                 <c:if test="${!empty bookView.collaborationAuthors}">
-                    <h4 class="page-title">Coauthors:
+                    <h4 class="page-title">Co-authors:
                         <c:forEach var="author" items="${bookView.collaborationAuthors}">
                             <a href="/author/${author.id}">
                                     ${author.firstName} ${author.lastName}
