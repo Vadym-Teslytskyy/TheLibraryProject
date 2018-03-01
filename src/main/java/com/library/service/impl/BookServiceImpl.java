@@ -102,7 +102,7 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     }
 
 
-    //    @Override
+    @Override
     @Transactional
     public void save(BookRequest bookRequest) {
         BookBuider bookBuider = new RegisteredBook(bookRequest);

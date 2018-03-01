@@ -6,28 +6,70 @@ import java.time.LocalDate;
 
 public class BookRequest {
 
-    private Author mainAuthor;
-    private Genre genre;
-    private String photoUrl;
+    private Integer id;
     private String name;
+    private String mainAuthorFirstName;
+    private String mainAuthorLastName;
+    private String releaseDate;
     private Integer generalCount;
+    private String genre;
+    private String photoUrl;
     private String fullDescription;
-    private LocalDate releaseDate;
     private Integer pagesAmount;
 
-    public Author getMainAuthor() {
-        return mainAuthor;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMainAuthor(Author mainAuthor) {
-        this.mainAuthor = mainAuthor;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Genre getGenre() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMainAuthorFirstName() {
+        return mainAuthorFirstName;
+    }
+
+    public void setMainAuthorFirstName(String mainAuthorFirstName) {
+        this.mainAuthorFirstName = mainAuthorFirstName;
+    }
+
+    public String getMainAuthorLastName() {
+        return mainAuthorLastName;
+    }
+
+    public void setMainAuthorLastName(String mainAuthorLastName) {
+        this.mainAuthorLastName = mainAuthorLastName;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Integer getGeneralCount() {
+        return generalCount;
+    }
+
+    public void setGeneralCount(Integer generalCount) {
+        this.generalCount = generalCount;
+    }
+
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -39,36 +81,12 @@ public class BookRequest {
         this.photoUrl = photoUrl;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getGeneralCount() {
-        return generalCount;
-    }
-
-    public void setGeneralCount(Integer generalCount) {
-        this.generalCount = generalCount;
-    }
-
     public String getFullDescription() {
         return fullDescription;
     }
 
     public void setFullDescription(String fullDescription) {
         this.fullDescription = fullDescription;
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
     }
 
     public Integer getPagesAmount() {
