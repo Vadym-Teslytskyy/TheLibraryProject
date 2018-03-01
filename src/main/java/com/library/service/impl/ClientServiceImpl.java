@@ -74,7 +74,7 @@ public class ClientServiceImpl extends CrudServiceImpl<Client, Integer, ClientRe
     @Transactional
     public void save(ClientRequest clientRequest) {
         RegisteredClient registeredClient = new RegisteredClient(clientRequest);
-        registeredClient.buildRegisteredClient();
+        registeredClient.buildClient();
         getRepository().save(registeredClient.getClient());
     }
 

@@ -11,6 +11,7 @@ public class BookView {
     private Integer id;
     private String photoUrl;
     private String name;
+    private Integer authorId;
     private String authorFirstName;
     private String authorLastName;
     private List<Author> collaborationAuthors;
@@ -21,50 +22,18 @@ public class BookView {
     private Integer availableCount;
     private Integer generalCount;
     private Double averageClientsAge;
+    private Long rentCount;
     private List<String> notReturnedBooks;
     private String usingLibraryTime;
 
     public BookView() {
     }
 
-//    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
-    public List<String> getNotReturnedBooks() {
-        return notReturnedBooks;
-    }
-
-    public void setNotReturnedBooks(List<String> notReturnedBooks) {
-        this.notReturnedBooks = notReturnedBooks;
-    }
-
-    public String getUsingLibraryTime() {
-        return usingLibraryTime;
-    }
-
-    public void setUsingLibraryTime(String usingLibraryTime) {
-        this.usingLibraryTime = usingLibraryTime;
-    }
-    //    private BookView(Integer id, String photoUrl, String name, String authorFirstName, String authorLastName,
-//                    List<String> collaborationAuthors, String genre, LocalDate releaseDate, String fullDescription,
-//                    Integer pagesAmount, Integer availableCount, Integer generalCount, Double averageClientsAge) {
-//        this.id = id;
-//        this.photoUrl = photoUrl;
-//        this.name = name;
-//        this.authorFirstName = authorFirstName;
-//        this.authorLastName = authorLastName;
-//        this.collaborationAuthors = collaborationAuthors;
-//        this.genre = genre;
-//        this.releaseDate = releaseDate;
-//        this.fullDescription = fullDescription;
-//        this.pagesAmount = pagesAmount;
-//        this.availableCount = availableCount;
-//        this.generalCount = generalCount;
-//        this.averageClientsAge = averageClientsAge;
-//    }
-
-    public BookView(Book book, Double averageAgeByBook) {
+    public BookView(Book book, Double averageAgeByBook, Long rentCount) {
         this.id = book.getId();
         this.photoUrl = book.getPhotoUrl();
         this.name = book.getName();
+        this.authorId = book.getMainAuthor().getId();
         this.authorFirstName = book.getMainAuthor().getFirstName();
         this.authorLastName = book.getMainAuthor().getLastName();
         this.collaborationAuthors = book.getCollaborationAuthors();
@@ -75,6 +44,7 @@ public class BookView {
         this.availableCount = book.getAvailableCount();
         this.generalCount = book.getGeneralCount();
         this.averageClientsAge = averageAgeByBook;
+        this.rentCount = rentCount;
     }
 
     public Integer getId() {
@@ -181,8 +151,40 @@ public class BookView {
         this.averageClientsAge = averageClientsAge;
     }
 
+    public Long getRentCount() {
+        return rentCount;
+    }
+
+    public void setRentCount(Long rentCount) {
+        this.rentCount = rentCount;
+    }
+
+    public List<String> getNotReturnedBooks() {
+        return notReturnedBooks;
+    }
+
+    public void setNotReturnedBooks(List<String> notReturnedBooks) {
+        this.notReturnedBooks = notReturnedBooks;
+    }
+
+    public String getUsingLibraryTime() {
+        return usingLibraryTime;
+    }
+
+    public void setUsingLibraryTime(String usingLibraryTime) {
+        this.usingLibraryTime = usingLibraryTime;
+    }
+
     public static Builder builder() {
         return new Builder();
+    }
+
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public static class Builder {
@@ -190,6 +192,7 @@ public class BookView {
         private Integer id;
         private String photoUrl;
         private String name;
+        private Integer authorId;
         private String authorFirstName;
         private String authorLastName;
         private List<Author> collaborationAuthors;
@@ -200,6 +203,9 @@ public class BookView {
         private Integer availableCount;
         private Integer generalCount;
         private Double averageClientsAge;
+        private Long rentCount;
+        private List<String> notReturnedBooks;
+        private String usingLibraryTime;
 
         public Builder setId(Integer id) {
             this.id = id;
@@ -213,6 +219,11 @@ public class BookView {
 
         public Builder setName(String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder setAuthorId(Integer authorId) {
+            this.authorId = authorId;
             return this;
         }
 
@@ -266,11 +277,27 @@ public class BookView {
             return this;
         }
 
+        public Builder setRentCount(Long rentCount) {
+            this.rentCount = rentCount;
+            return this;
+        }
+
+        public Builder setGetNotReturnedBooks(List<String> notReturnedBooks) {
+            this.notReturnedBooks = notReturnedBooks;
+            return this;
+        }
+
+        public Builder setUsingLibraryTime(String usingLibraryTime) {
+            this.usingLibraryTime = usingLibraryTime;
+            return this;
+        }
+
         public BookView build() {
             BookView bookView = new BookView();
             bookView.setId(id);
             bookView.setPhotoUrl(photoUrl);
             bookView.setName(name);
+            bookView.setAuthorId(authorId);
             bookView.setAuthorFirstName(authorFirstName);
             bookView.setAuthorLastName(authorLastName);
             bookView.setCollaborationAuthors(collaborationAuthors);
@@ -281,6 +308,9 @@ public class BookView {
             bookView.setAvailableCount(availableCount);
             bookView.setGeneralCount(generalCount);
             bookView.setAverageClientsAge(averageClientsAge);
+            bookView.setRentCount(rentCount);
+            bookView.setNotReturnedBooks(notReturnedBooks);
+            bookView.setUsingLibraryTime(usingLibraryTime);
             return bookView;
         }
     }

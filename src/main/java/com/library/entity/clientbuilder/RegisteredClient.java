@@ -14,7 +14,7 @@ public class RegisteredClient extends ClientBuider {
     }
 
     @Override
-    public void buildRegisteredClient() {
+    public void buildClient() {
         createNewClient();
         client.setId(clientRequest.getId());
         client.setFirstName(clientRequest.getFirstName());

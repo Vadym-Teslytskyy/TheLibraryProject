@@ -1,8 +1,9 @@
 package com.library.service;
 
 import com.library.entity.Book;
+import com.library.model.request.BookRequest;
+import com.library.model.request.ClientRequest;
 import com.library.model.request.BookFamousFilterRequest;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,5 +33,8 @@ public interface BookService extends CrudService<Book, Integer> {
 
     Book findBookByName(String bookName);
 
+    void save(BookRequest bookRequest);
+
     List<Book> findBooksByFamousFilter(BookFamousFilterRequest request);
+
 }

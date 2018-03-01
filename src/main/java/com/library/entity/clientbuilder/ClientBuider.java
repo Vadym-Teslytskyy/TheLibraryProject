@@ -18,6 +18,6 @@ public abstract class ClientBuider {
         return client;
     }
 
-    public abstract void buildRegisteredClient();
+    public abstract void buildClient();
 
 }
