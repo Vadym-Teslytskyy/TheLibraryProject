@@ -1,9 +1,6 @@
 package com.library.controller;
 
-import com.library.entity.Book;
-import com.library.entity.Genre;
 import com.library.model.request.BookRequest;
-import com.library.model.request.ClientRequest;
 import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +27,11 @@ public class BookRegistrationController {
     @ModelAttribute("newBookComponent")
     public BookRequest getForm() {
         return new BookRequest();
+    }
+
+    @RequestMapping("/contact")
+    public String showContactPage(Model model) {
+        return "contact";
     }
 
     @PostMapping("/bookRegistration")

@@ -59,7 +59,7 @@
                     <div class="widget-body">
                         <p class="simplenav">
                             <a href="/">Home</a> |
-                            <a href="/">Contact</a> |
+                            <a href="/contact">Contact</a> |
                             <a href="/authors">Authors</a> |
                             <a href="/books">Books</a> |
                             <b><a href="/signin">Sign up</a></b>
