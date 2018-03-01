@@ -34,7 +34,7 @@
                                             path="name"/>
                             </div>
                             <div class="top-margin">
-                                <label>Main Author Last Name</label>
+                                <label>Main Author</label>
                                 <form:select class="form-control" path="author" items="${authors}" itemValue="id"
                                              itemLabel="lastName"/>
                             </div>

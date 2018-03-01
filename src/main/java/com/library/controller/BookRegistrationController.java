@@ -46,7 +46,7 @@ public class BookRegistrationController {
         return "redirect:/bookRegistration";
     }
 
-//    @GetMapping("/cancel")
+//    @GetMapping("/cleanBookFields")
 //    public String cancel(SessionStatus status) {
 //        status.setComplete();
 //        return "redirect:/bookRegistration";
