@@ -35,7 +35,7 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
 
     /**
      * Task 5.2. Скільки разів брали певну книжку по примірникам
-     * (Скільки окремих примірників брали?)
+     * (Скільки разів брали певний примірник.)
      */
     Long getCopiesRentCount(int bookId);
 
