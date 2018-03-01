@@ -20,9 +20,9 @@ public class AdminAuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/authorRegistration")
+    @GetMapping("/adminAuthor")
     public String getRegistrationPage(Model model) {
-        return "authorRegistration";
+        return "adminAuthor";
     }
 
     @ModelAttribute("newAuthorComponent")
@@ -30,9 +30,9 @@ public class AdminAuthorController {
         return new AuthorRequest();
     }
 
-    @PostMapping("/authorRegistration")
+    @PostMapping("/adminAuthor")
     public String save(@ModelAttribute("newAuthorComponent") AuthorRequest request, SessionStatus status) {
         authorService.save(request);
-        return "redirect:/authorRegistration";
+        return "redirect:/adminAuthor";
     }
 }

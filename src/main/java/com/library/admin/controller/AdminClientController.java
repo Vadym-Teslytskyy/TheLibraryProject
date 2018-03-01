@@ -27,9 +27,9 @@ public class AdminClientController {
         return "signIn";
     }
 
-    @GetMapping("/clientRegistration")
+    @GetMapping("/adminClient")
     public String getRegistrationPage(Model model) {
-        return "clientRegistration";
+        return "adminClient";
     }
 
     @ModelAttribute("newClientComponent")
@@ -37,16 +37,16 @@ public class AdminClientController {
         return new ClientRequest();
     }
 
-    @PostMapping("/clientRegistration")
+    @PostMapping("/adminClient")
     public String save(@ModelAttribute("newClientComponent") ClientRequest request, SessionStatus status) {
         clientService.save(request);
         return cancel(status);
     }
 
-    @GetMapping("/cleanClientFields")
+    @GetMapping("/adminClient")
     public String cancel(SessionStatus status) {
         status.setComplete();
-        return "redirect:/clientRegistration";
+        return "redirect:/adminClient";
     }
 
 }

@@ -14,17 +14,17 @@
     <definition name="signIn" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/signIn.jsp"/>
     </definition>
-    <definition name="clientRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/clientRegistration.jsp"/>
+    <definition name="adminClient" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/adminClient.jsp"/>
     </definition>
-    <definition name="bookRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/bookRegistration.jsp"/>
+    <definition name="adminBook" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/adminBook.jsp"/>
     </definition>
-    <definition name="authorRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/authorRegistration.jsp"/>
+    <definition name="adminAuthor" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/adminAuthor.jsp"/>
     </definition>
-    <definition name="genreRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/genreRegistration.jsp"/>
+    <definition name="adminGenre" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/adminGenre.jsp"/>
     </definition>
     <definition name="clients" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/clients.jsp"/>

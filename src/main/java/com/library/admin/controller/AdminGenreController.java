@@ -17,9 +17,9 @@ public class AdminGenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/genreRegistration")
+    @GetMapping("/adminGenre")
     public String getRegistrationPage(Model model) {
-        return "genreRegistration";
+        return "adminGenre";
     }
 
     @PostMapping
@@ -27,6 +27,6 @@ public class AdminGenreController {
         Genre genre = new Genre();
         genre.setGenreName(genreName);
         genreService.save(genre);
-        return "redirect:/genreRegistration";
+        return "redirect:/adminGenre";
     }
 }

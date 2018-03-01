@@ -38,10 +38,10 @@ public class AdminBookController {
         return "contact";
     }
 
-    @PostMapping("/bookRegistration")
+    @PostMapping("/adminBook")
     public String save(@ModelAttribute("newBookComponent") BookRequest request, SessionStatus status) {
         bookService.save(request);
-        return "redirect:/bookRegistration";
+        return "redirect:/adminBook";
     }
 
 //    @GetMapping("/cleanBookFields")
@@ -50,11 +50,11 @@ public class AdminBookController {
 //        return "redirect:/bookRegistration";
 //    }
 
-    @GetMapping("/bookRegistration")
+    @GetMapping("/adminBook")
     public String getRegistrationPage1(Model model) {
         model.addAttribute("genres", genreService.findAll());
         model.addAttribute("authors", authorService.findAll());
-        return "bookRegistration";
+        return "adminBook";
     }
 
 }
