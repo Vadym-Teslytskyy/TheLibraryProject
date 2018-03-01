@@ -1,9 +1,10 @@
-package com.library.entity.authorbuider;
+package com.library.entity.builder.authorbuider;
 
+import com.library.entity.Author;
 import com.library.model.request.AuthorRequest;
 import java.time.LocalDate;
 
-public class RegisteredAuthor extends AuthorBuider {
+public class RegisteredAuthor extends AuthorClassBuider {
 
     AuthorRequest authorRequest;
 
@@ -12,12 +13,18 @@ public class RegisteredAuthor extends AuthorBuider {
     }
 
     @Override
-    public void buidAuthor() {
+    public void buid() {
         createNewAuthor();
         author.setFirstName(authorRequest.getFirstName());
         author.setLastName(authorRequest.getLastName());
         author.setBirthDate(LocalDate.parse(authorRequest.getBirthDate()));
         author.setCountry(authorRequest.getCountry());
         author.setPhotoUrl(authorRequest.getPhotoUrl());
+
+    }
+
+    @Override
+    public Author getInstance() {
+        return author;
     }
 }
