@@ -29,7 +29,7 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
      */
     @Override
     public List<Book> findByMainAuthor(int authorId) {
-        String sqlQuery = "SELECT DISTINCT b.name FROM Book b JOIN b.mainAuthor a WHERE a.id = ?1";
+        String sqlQuery = "SELECT b FROM Book b JOIN b.mainAuthor a WHERE a.id = ?1";
         TypedQuery<Book> query = getEntityManager().createQuery(sqlQuery, Book.class);
         query.setParameter(1, authorId);
         return query.getResultList();

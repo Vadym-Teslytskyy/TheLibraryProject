@@ -14,15 +14,14 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="/">About</a></li>
+                <li><a href="/">Contact</a></li>
                 <li class="dropdown">
-                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">Find<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/">Left Sidebar</a></li>
-                        <li class="active"><a href="/">Right Sidebar</a></li>
+                        <li><a href="/authors">Authors</a></li>
+                        <li><a href="/books">Books</a></li>
                     </ul>
                 </li>
-                <li><a href="/">Contact</a></li>
                 <li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
             </ul>
         </div>

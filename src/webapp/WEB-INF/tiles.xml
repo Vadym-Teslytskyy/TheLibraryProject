@@ -14,8 +14,8 @@
     <definition name="signIn" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/signIn.jsp"/>
     </definition>
-    <definition name="clientRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/clientRegistration.jsp"/>
+    <definition name="registration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
     <definition name="clientStatistic" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/clientStatistic.jsp"/>
@@ -29,14 +29,11 @@
     <definition name="bookFilter" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/bookFilter.jsp"/>
     </definition>
-    <definition name="theListOfAllBooks" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/theListOfAllBooks.jsp"/>
+    <definition name="authorView" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/authorView.jsp"/>
     </definition>
-    <definition name="bookRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/bookRegistration.jsp"/>
-    </definition>
-    <definition name="genreRegistration" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/views/genreRegistration.jsp"/>
+    <definition name="authorFilter" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/authorFilter.jsp"/>
     </definition>
 
 </tiles-definitions>

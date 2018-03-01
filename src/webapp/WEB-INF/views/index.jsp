@@ -9,7 +9,7 @@
             <h1 class="lead">THE BEST LIBRARY IN LVIV</h1>
             <p class="tagline">Pump your brain with our books</p>
             <p>
-                <a class="btn btn-default btn-lg" role="button">MORE INFO</a>
+                <a class="btn btn-default btn-lg" href="/authors">Show all authors</a>
                 <a class="btn btn-action btn-lg" href="/books">Show all books</a>
             </p>
         </div>
