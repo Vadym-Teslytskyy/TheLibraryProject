@@ -1,11 +1,11 @@
-package com.library.entity.builder.bookbuilder;
+package com.library.entity.buider.bookbuilder;
 
 import com.library.entity.Book;
 import com.library.model.request.BookRequest;
 
 import java.time.LocalDate;
 
-public class RegisteredBook extends BookBuider {
+public class RegisteredBook extends BookBuilder {
 
     BookRequest bookRequest;
 
@@ -15,15 +15,6 @@ public class RegisteredBook extends BookBuider {
 
     @Override
     public void buid() {
-//        Genre genre = new Genre();
-//        genre.setGenreName(bookRequest.getGenre());
-//        book.setGenre(genre);
-
-//        Author mainAuthor = new Author();
-//        mainAuthor.setFirstName(bookRequest.getMainAuthorFirstName());
-//        mainAuthor.setLastName(bookRequest.getMainAuthorLastName());
-//        book.setMainAuthor(mainAuthor);
-
         createNewBook();
         book.setName(bookRequest.getName());
         book.setPhotoUrl(bookRequest.getPhotoUrl());
@@ -31,7 +22,6 @@ public class RegisteredBook extends BookBuider {
         book.setAvailableCount(bookRequest.getGeneralCount());
         book.setFullDescription(bookRequest.getFullDescription());
         book.setReleaseDate(LocalDate.parse(bookRequest.getReleaseDate()));
-
     }
 
     @Override

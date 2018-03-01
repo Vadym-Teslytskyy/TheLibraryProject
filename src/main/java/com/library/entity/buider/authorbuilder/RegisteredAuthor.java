@@ -1,10 +1,11 @@
-package com.library.entity.builder.authorbuider;
+package com.library.entity.buider.authorbuilder;
 
 import com.library.entity.Author;
 import com.library.model.request.AuthorRequest;
+
 import java.time.LocalDate;
 
-public class RegisteredAuthor extends AuthorClassBuider {
+public class RegisteredAuthor extends AuthorBuilder {
 
     AuthorRequest authorRequest;
 
@@ -20,7 +21,6 @@ public class RegisteredAuthor extends AuthorClassBuider {
         author.setBirthDate(LocalDate.parse(authorRequest.getBirthDate()));
         author.setCountry(authorRequest.getCountry());
         author.setPhotoUrl(authorRequest.getPhotoUrl());
-
     }
 
     @Override
