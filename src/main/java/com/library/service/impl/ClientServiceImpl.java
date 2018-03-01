@@ -4,8 +4,6 @@ import com.library.entity.Book;
 import com.library.entity.Client;
 import com.library.entity.buider.ClassBuilder;
 import com.library.entity.buider.clientbuilder.RegisteredClient;
-import com.library.entity.builder.ClassBuider;
-import com.library.entity.builder.clientbuilder.RegisteredClient;
 import com.library.model.request.ClientRequest;
 import com.library.repository.ClientRepository;
 import com.library.service.ClientService;
