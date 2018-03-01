@@ -63,7 +63,8 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0">
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
-                               aria-controls="collapseOne">Show statistic<i class="fa fa-arrow-down ml-1"></i></a>
+                               aria-controls="collapseOne" class="btn btn-primary">Show statistic<i
+                                    class="fa fa-arrow-down ml-1"></i></a>
                         </h5>
                     </div>
                     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne"
