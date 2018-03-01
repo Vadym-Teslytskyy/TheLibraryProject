@@ -30,6 +30,9 @@ public class Author extends AbstractEntityId {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "short_biography", length = 1000)
+    private String shortBiography;
+
     public String getFirstName() {
         return firstName;
     }
@@ -89,5 +92,13 @@ public class Author extends AbstractEntityId {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getShortBiography() {
+        return shortBiography;
+    }
+
+    public void setShortBiography(String shortBiography) {
+        this.shortBiography = shortBiography;
     }
 }

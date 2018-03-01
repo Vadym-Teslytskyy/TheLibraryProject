@@ -1,8 +1,10 @@
 package com.library.model.view;
 
 import com.library.entity.Author;
+import com.library.entity.Book;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class AuthorView {
 
@@ -13,12 +15,15 @@ public class AuthorView {
     private LocalDate birthDate;
     private String country;
     private Double averageClientsAge;
+    private List<Book> books;
+    private String shortBiography;
 
     public AuthorView() {
     }
 
     private AuthorView(Integer id, String photoUrl, String firstName, String lastName,
-                       LocalDate birthDate, String country, Double averageClientsAge) {
+                       LocalDate birthDate, String country, Double averageClientsAge,
+                       List<Book> books, String shortBiography) {
         this.id = id;
         this.photoUrl = photoUrl;
         this.firstName = firstName;
@@ -26,6 +31,8 @@ public class AuthorView {
         this.birthDate = birthDate;
         this.country = country;
         this.averageClientsAge = averageClientsAge;
+        this.books = books;
+        this.shortBiography = shortBiography;
     }
 
     public AuthorView(Author author, Double averageClientsAge) {
@@ -36,6 +43,8 @@ public class AuthorView {
         this.birthDate = author.getBirthDate();
         this.country = author.getCountry();
         this.averageClientsAge = averageClientsAge;
+        this.books = author.getOwnBooks();
+        this.shortBiography = author.getShortBiography();
     }
 
     public String getPhotoUrl() {
@@ -66,6 +75,22 @@ public class AuthorView {
         return id;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public String getShortBiography() {
+        return shortBiography;
+    }
+
+    public void setShortBiography(String shortBiography) {
+        this.shortBiography = shortBiography;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -79,6 +104,8 @@ public class AuthorView {
         private LocalDate birthDate;
         private String country;
         private Double averageClientsAge;
+        private List<Book> books;
+        private String shortBiography;
 
         public Builder setId(Integer id) {
             this.id = id;
@@ -115,8 +142,19 @@ public class AuthorView {
             return this;
         }
 
+        public Builder setBooks(List<Book> books) {
+            this.books = books;
+            return this;
+        }
+
+        public Builder setShortBiography(String shortBiography) {
+            this.shortBiography = shortBiography;
+            return this;
+        }
+
         public AuthorView build() {
-            return new AuthorView(id, photoUrl, firstName, lastName, birthDate, country, averageClientsAge);
+            return new AuthorView(id, photoUrl, firstName, lastName,
+                    birthDate, country, averageClientsAge, books, shortBiography);
         }
     }
 }

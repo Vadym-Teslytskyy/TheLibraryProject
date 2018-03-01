@@ -32,6 +32,9 @@
     <definition name="bookView" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/bookView.jsp"/>
     </definition>
+    <definition name="authorView" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/authorView.jsp"/>
+    </definition>
     <definition name="bookFilter" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/bookFilter.jsp"/>
     </definition>
