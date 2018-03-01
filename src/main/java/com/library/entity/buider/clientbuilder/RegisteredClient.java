@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class RegisteredClient extends ClientBuilder {
 
-    ClientRequest clientRequest;
+    private ClientRequest clientRequest;
 
     public RegisteredClient(ClientRequest clientRequest) {
         this.clientRequest = clientRequest;

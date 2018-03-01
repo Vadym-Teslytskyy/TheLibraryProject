@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class RegisteredBook extends BookBuilder {
 
-    BookRequest bookRequest;
+    private BookRequest bookRequest;
 
     public RegisteredBook(BookRequest bookRequest) {
         this.bookRequest = bookRequest;

@@ -5,9 +5,9 @@ import com.library.entity.buider.ClassBuilder;
 
 public abstract class AuthorBuilder implements ClassBuilder<Author> {
 
-    public Author author;
+    protected Author author;
 
-    public void createNewAuthor() {
+    protected void createNewAuthor() {
         author = new Author();
     }
 }

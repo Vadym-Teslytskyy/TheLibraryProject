@@ -5,9 +5,9 @@ import com.library.entity.buider.ClassBuilder;
 
 public abstract class ClientBuilder implements ClassBuilder<Client> {
 
-    public Client client;
+    protected Client client;
 
-    public void createNewClient() {
+    protected void createNewClient() {
         client = new Client();
     }
 }

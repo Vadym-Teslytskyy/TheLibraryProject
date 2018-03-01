@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class RegisteredAuthor extends AuthorBuilder {
 
-    AuthorRequest authorRequest;
+    private AuthorRequest authorRequest;
 
     public RegisteredAuthor(AuthorRequest authorRequest) {
         this.authorRequest = authorRequest;

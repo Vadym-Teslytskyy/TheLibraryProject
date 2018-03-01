@@ -5,9 +5,9 @@ import com.library.entity.buider.ClassBuilder;
 
 public abstract class BookBuilder implements ClassBuilder<Book> {
 
-    public Book book;
+    protected Book book;
 
-    public void createNewBook() {
+    protected void createNewBook() {
         book = new Book();
     }
 }
