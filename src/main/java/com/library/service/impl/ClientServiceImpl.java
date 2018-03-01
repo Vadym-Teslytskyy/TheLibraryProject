@@ -72,6 +72,11 @@ public class ClientServiceImpl extends CrudServiceImpl<Client, Integer, ClientRe
     }
 
     @Override
+    public Integer getAge(int clientId) {
+        return getRepository().getAge(clientId);
+    }
+
+    @Override
     @Transactional
     public void save(ClientRequest clientRequest) {
         ClassBuilder<Client> clientClassBuider = new RegisteredClient(clientRequest);

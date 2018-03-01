@@ -9,7 +9,7 @@
             <div class="row">
 
                 <div class="col-md-3 widget">
-                    <h3 class="widget-title">Contact</h3>
+                    <h3 class="widget-title">Contact us</h3>
                     <div class="widget-body">
                         <p>+234 23 9873237<br>
                             <a href="mailto:#">some.email@somewhere.com</a><br>
@@ -59,7 +59,7 @@
                     <div class="widget-body">
                         <p class="simplenav">
                             <a href="/">Home</a> |
-                            <a href="/contact">Contact</a> |
+                            <a href="/contact">Contact us</a> |
                             <a href="/authors">Authors</a> |
                             <a href="/books">Books</a> |
                             <b><a href="/signin">Sign up</a></b>

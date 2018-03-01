@@ -14,7 +14,6 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="/contact">Contact</a></li>
                 <li class="dropdown">
                     <a href="/" class="dropdown-toggle" data-toggle="dropdown">Find<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -22,6 +21,7 @@
                         <li><a href="/books">Books</a></li>
                     </ul>
                 </li>
+                <li><a href="/contact">Contact us</a></li>
                 <li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
             </ul>
         </div>

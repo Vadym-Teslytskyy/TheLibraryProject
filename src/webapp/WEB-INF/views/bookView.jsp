@@ -24,6 +24,9 @@
         <article class="col-md-8 maincontent">
             <header class="page-header">
                 <h1 class="page-title page-header">${bookView.name}</h1>
+                <c:if test="${bookView.availableCount > 0}">
+                    ${bookView.availableCount} books are available
+                </c:if>
                 <h4 class="page-title">Author:
                     <a href="/author/${bookView.authorId}">
                         ${bookView.authorFirstName} ${bookView.authorLastName}
@@ -34,7 +37,7 @@
                     <h4 class="page-title">Co-authors:
                         <c:forEach var="author" items="${bookView.collaborationAuthors}">
                             <a href="/author/${author.id}">
-                                    ${author.firstName} ${author.lastName}
+                                    ${author.firstName} ${author.lastName},
                             </a>
                         </c:forEach>
                     </h4>

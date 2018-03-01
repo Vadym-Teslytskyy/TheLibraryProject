@@ -31,7 +31,10 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
      */
     @Override
     public List<Book> findNotReturnedBooks(int clientId) {
-        String sql = "SELECT client.readedBooks FROM Client client JOIN client.rents rent "
+        String sql = "SELECT book FROM Rent rent "
+                + "JOIN rent.copyOfBook copyOfBook "
+                + "JOIN copyOfBook.book book "
+                + "JOIN rent.user client "
                 + "WHERE rent.returnTime IS NULL AND client.id = ?1";
         TypedQuery<Book> query = getEntityManager().createQuery(sql, Book.class);
         query.setParameter(1, clientId);
@@ -133,6 +136,22 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
         TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
         query.setParameter(1, authorId);
         return query.getSingleResult();
+    }
+
+    /**
+     * (Not works)
+     * {@inheritDoc}
+     */
+    @Override
+    public Integer getAge(int clientId) {
+        String sql = "SELECT DATEDIFF(NOW(), client.birthDate) "
+                + "FROM Client client "
+                + "WHERE client.id = ?1";
+        TypedQuery<Double> query = getEntityManager().createQuery(sql, Double.class);
+        query.setParameter(1, clientId);
+        List singleResult = query.getResultList();
+        Integer result = (Integer) singleResult.get(0);
+        return result;
     }
 
     @Override

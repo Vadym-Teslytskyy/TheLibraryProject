@@ -56,7 +56,12 @@ public interface ClientService extends CrudService<Client, Integer> {
      */
     Double findAverageAgeByAuthor(int authorId);
 
+    /**
+     * No task. Returns age based on birth date.
+     */
+    Integer getAge(int clientId);
+
     void save(ClientRequest clientRequest);
 
-    public List<Integer> getAllClientsId();
+    List<Integer> getAllClientsId();
 }
