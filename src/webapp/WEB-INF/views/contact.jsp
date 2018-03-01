@@ -78,5 +78,5 @@
     <div id="map"></div>
 </section>
 <!-- Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9yFHZD58Oi1TWMnN4uSmlEKJhg3AdHhs"></script>
 <script src="/resources/js/google-map.js"></script>
