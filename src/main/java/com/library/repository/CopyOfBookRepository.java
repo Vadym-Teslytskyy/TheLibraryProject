@@ -1,7 +1,7 @@
 package com.library.repository;
 
-import com.library.entity.CopyOfBook;
+import com.library.entity.BookCopy;
 
-public interface CopyOfBookRepository extends CrudRepository<CopyOfBook, Integer> {
+public interface CopyOfBookRepository extends CrudRepository<BookCopy, Integer> {
 
 }

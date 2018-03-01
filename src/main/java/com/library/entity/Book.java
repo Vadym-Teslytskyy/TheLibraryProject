@@ -15,7 +15,7 @@ public class Book extends AbstractEntityId {
     private List<Client> users;
 
     @OneToMany(mappedBy = "book")
-    private List<CopyOfBook> copiesList;
+    private List<BookCopy> copiesList;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Author mainAuthor;
@@ -87,11 +87,11 @@ public class Book extends AbstractEntityId {
         this.genre = genre;
     }
 
-    public List<CopyOfBook> getCopiesList() {
+    public List<BookCopy> getCopiesList() {
         return copiesList;
     }
 
-    public void setCopiesList(List<CopyOfBook> copiesList) {
+    public void setCopiesList(List<BookCopy> copiesList) {
         this.copiesList = copiesList;
     }
 

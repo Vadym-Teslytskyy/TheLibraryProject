@@ -26,7 +26,7 @@
                 <h1 class="page-title page-header">${bookView.name}</h1>
                 <h4 class="page-title">Author:
                     <a href="/author/${bookView.authorId}">
-                        ${bookView.authorFirstName} ${bookView.authorLastName},
+                        ${bookView.authorFirstName} ${bookView.authorLastName}
                     </a>
                 </h4>
 

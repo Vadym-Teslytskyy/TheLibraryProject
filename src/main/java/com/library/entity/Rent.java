@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Rent extends AbstractEntityId {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private CopyOfBook copyOfBook;
+    private BookCopy copyOfBook;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Client user;
@@ -43,11 +43,11 @@ public class Rent extends AbstractEntityId {
         this.user = user;
     }
 
-    public CopyOfBook getCopyOfBook() {
+    public BookCopy getCopyOfBook() {
         return copyOfBook;
     }
 
-    public void setCopyOfBook(CopyOfBook copyOfBook) {
+    public void setCopyOfBook(BookCopy copyOfBook) {
         this.copyOfBook = copyOfBook;
     }
 
