@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header id="head" class="secondary"></header>
 <!-- container -->
@@ -33,16 +34,9 @@
                                             path="name"/>
                             </div>
                             <div class="top-margin">
-                                <label>Main Author First Name</label>
-                                <form:input type="text" id="mainAuthorFirstName" placeholder="Main Author First Name"
-                                            class="form-control"
-                                            path="mainAuthorFirstName"/>
-                            </div>
-                            <div class="top-margin">
-                                <label>Main Author Last Name<span class="text-danger">*</span></label>
-                                <form:input type="text" id="mainAuthorLastName" placeholder="Main Author Last Name"
-                                            class="form-control"
-                                            path="mainAuthorLastName"/>
+                                <label>Main Author Last Name</label>
+                                <form:select class="form-control" path="author" items="${authors}" itemValue="id"
+                                             itemLabel="lastName"/>
                             </div>
 
                             <div class="top-margin">
@@ -58,8 +52,8 @@
 
                             <div class="top-margin">
                                 <label>Genre<span class="text-danger">*</span></label>
-                                <form:input type="text" id="genre" placeholder="Genre" class="form-control"
-                                            path="genre"/>
+                                <form:select class="form-control" path="genre" items="${genres}" itemValue="id"
+                                             itemLabel="genreName"/>
                             </div>
 
                             <div class="top-margin">
@@ -76,7 +70,8 @@
 
                             <div class="top-margin">
                                 <label>Full Rescription<span class="text-danger">*</span></label>
-                                <form:input type="text" id="photoUrl" placeholder="Full Rescription" class="form-control"
+                                <form:input type="text" id="photoUrl" placeholder="Full Rescription"
+                                            class="form-control"
                                             path="fullDescription"/>
                             </div>
 

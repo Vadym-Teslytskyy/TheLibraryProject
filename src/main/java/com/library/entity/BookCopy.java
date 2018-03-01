@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "copy_of_book")
-public class CopyOfBook extends AbstractEntityId {
+public class BookCopy extends AbstractEntityId {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
@@ -15,6 +15,8 @@ public class CopyOfBook extends AbstractEntityId {
 
     @Column(name = "is_available")
     private Boolean isAvailable;
+
+    private BookState state;
 
     public Boolean isAvailable() {
         return isAvailable;
@@ -38,5 +40,13 @@ public class CopyOfBook extends AbstractEntityId {
 
     public void setRents(List<Rent> rents) {
         this.rents = rents;
+    }
+
+    public BookState getState() {
+        return state;
+    }
+
+    public void setState(BookState state) {
+        this.state = state;
     }
 }

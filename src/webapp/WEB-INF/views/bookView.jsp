@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 24.02.2018
-  Time: 20:04
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header id="head" class="secondary"></header>
@@ -33,12 +26,12 @@
                 <h1 class="page-title page-header">${bookView.name}</h1>
                 <h4 class="page-title">Author:
                     <a href="/author/${bookView.authorId}">
-                        ${bookView.authorFirstName} ${bookView.authorLastName},
+                        ${bookView.authorFirstName} ${bookView.authorLastName}
                     </a>
                 </h4>
 
                 <c:if test="${!empty bookView.collaborationAuthors}">
-                    <h4 class="page-title">Coauthors:
+                    <h4 class="page-title">Co-authors:
                         <c:forEach var="author" items="${bookView.collaborationAuthors}">
                             <a href="/author/${author.id}">
                                     ${author.firstName} ${author.lastName}

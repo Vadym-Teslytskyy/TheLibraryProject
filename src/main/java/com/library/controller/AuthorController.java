@@ -38,13 +38,12 @@ public class AuthorController {
     public String showAuthorView(Model model, @PathVariable Integer id) {
         Author author = authorService.find(id);
         if (author != null) {
-            Double avgClientAge = clientService.findAverageAgeByAuthor(id);
-            AuthorView authorView = new AuthorView(author, avgClientAge);
-            model.addAttribute("books", bookService.findByMainAuthor(id));
-            model.addAttribute("author", authorView);
+            Double averageClientsAge = clientService.findAverageAgeByAuthor(id);
+            AuthorView authorView = new AuthorView(author, averageClientsAge);
+            model.addAttribute("authorView", authorView);
             return "authorView";
-        } else return "authorFilter";
+        } else {
+            return "authorFilter";
+        }
     }
-
-
 }

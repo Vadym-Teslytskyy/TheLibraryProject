@@ -1,13 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 28.02.2018
-  Time: 23:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header id="head" class="secondary"></header>
+
 <!-- container -->
 <div class="container">
 
@@ -19,7 +13,7 @@
             <div class="row widget">
                 <div class="col-xs-12">
                     <p>
-                        <img src="https://pmcdeadline2.files.wordpress.com/2017/02/rexfeatures_292491a-e1486097324892.jpg?w=605"
+                        <img src="/resources/images/author_previews/${authorView.photoUrl}"
                              alt=""></p>
                 </div>
             </div>
@@ -29,16 +23,14 @@
         <!-- Article main content -->
         <article class="col-md-8 maincontent">
             <header class="page-header">
-                <h1 class="page-title page-header">${author.firstName} ${author.lastName}</h1>
-                <h4 class="page-title">Birth date: ${author.birthDate}</h4>
-                <h4 class="page-title page-header">Country: ${author.country}</h4>
-                <h5 class="page-title">Average client age: ${author.averageClientsAge}</h5>
+                <h1 class="page-title page-header">${authorView.firstName} ${authorView.lastName}</h1>
+                <h4 class="page-title">Date of birth: ${authorView.birthDate}</h4>
+                <h4 class="page-title page-header">Country: ${authorView.country}</h4>
+                <h5 class="page-title">Average client age: ${authorView.averageClientsAge}</h5>
             </header>
 
             <blockquote>
-                Some description here! Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum,
-                ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi
-                facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.
+                ${authorView.shortBiography}
             </blockquote>
 
             <div class="row">
@@ -57,15 +49,31 @@
                                 <div class="card-body">
                                     <table class="table table-bordered">
                                         <tr>
-                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Book name</th>
+                                            <c:if test="${!empty book.collaborationAuthors}">
+                                                <th class="text-center">Co-authors</th>
+                                            </c:if>
                                             <th class="text-center">Genre</th>
-                                            <th class="text-center">Release date</th>
+                                            <th class="text-center">Release year</th>
+                                            <th class="text-center">Available count</th>
                                         </tr>
-                                        <c:forEach var="book" items="${books}">
+                                        <c:forEach var="book" items="${authorView.books}">
                                             <tr>
-                                                <td>${book.name}</td>
-                                                <td>${book.genre}</td>
-                                                <td>${book.releaseDate}</td>
+                                                <td class="text-center">
+                                                    <a href="/book/${book.id}">${book.name}</a>
+                                                </td>
+                                                <c:if test="${!empty book.collaborationAuthors}">
+                                                    <td class="text-center">
+                                                        <c:forEach var="author" items="${book.collaborationAuthors}">
+                                                            <a href="/author/${author.id}">
+                                                                    ${author.firstName} ${author.lastName},
+                                                            </a>
+                                                        </c:forEach>
+                                                    </td>
+                                                </c:if>
+                                                <td class="text-center">${book.genre.genreName}</td>
+                                                <td class="text-center">${book.releaseDate.year}</td>
+                                                <td class="text-center">${book.availableCount}</td>
                                             </tr>
                                         </c:forEach>
                                     </table>

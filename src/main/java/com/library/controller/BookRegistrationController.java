@@ -1,7 +1,10 @@
 package com.library.controller;
 
+import com.library.entity.Author;
 import com.library.model.request.BookRequest;
+import com.library.service.AuthorService;
 import com.library.service.BookService;
+import com.library.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +16,19 @@ import org.springframework.web.bind.support.SessionStatus;
 public class BookRegistrationController {
 
     private final BookService bookService;
+    private final GenreService genreService;
+    private final AuthorService authorService;
 
-    @Autowired
-    public BookRegistrationController(BookService bookService) {
+    public BookRegistrationController(BookService bookService, GenreService genreService, AuthorService authorService) {
         this.bookService = bookService;
+        this.genreService = genreService;
+        this.authorService = authorService;
     }
 
-    @GetMapping("/bookRegistration")
-    public String getRegistrationPage(Model model) {
-        return "bookRegistration";
-    }
+    //    @GetMapping("/bookRegistration")
+//    public String getRegistrationPage(Model model) {
+//        return "bookRegistration";
+//    }
 
     @ModelAttribute("newBookComponent")
     public BookRequest getForm() {
@@ -45,5 +51,12 @@ public class BookRegistrationController {
 //        status.setComplete();
 //        return "redirect:/bookRegistration";
 //    }
+
+    @GetMapping("/bookRegistration")
+    public String getRegistrationPage1(Model model) {
+        model.addAttribute("genres", genreService.findAll());
+        model.addAttribute("authors", authorService.findAll());
+        return "bookRegistration";
+    }
 
 }

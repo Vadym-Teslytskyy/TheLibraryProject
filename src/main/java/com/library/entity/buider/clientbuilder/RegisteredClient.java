@@ -1,20 +1,19 @@
-package com.library.entity.clientbuilder;
+package com.library.entity.buider.clientbuilder;
 
-import com.library.entity.clientbuilder.ClientBuider;
+import com.library.entity.Client;
 import com.library.model.request.ClientRequest;
-
 import java.time.LocalDate;
 
-public class RegisteredClient extends ClientBuider {
+public class RegisteredClient extends ClientBuilder {
 
-    ClientRequest clientRequest;
+    private ClientRequest clientRequest;
 
     public RegisteredClient(ClientRequest clientRequest) {
         this.clientRequest = clientRequest;
     }
 
     @Override
-    public void buildClient() {
+    public void buid() {
         createNewClient();
         client.setId(clientRequest.getId());
         client.setFirstName(clientRequest.getFirstName());
@@ -25,5 +24,10 @@ public class RegisteredClient extends ClientBuider {
         client.setPhoneNumber(clientRequest.getPhoneNumber());
         client.setBirthDate(LocalDate.parse(clientRequest.getBirthDate()));
         client.setRegistrationDate(LocalDate.now());
+    }
+
+    @Override
+    public Client getInstance() {
+        return client;
     }
 }

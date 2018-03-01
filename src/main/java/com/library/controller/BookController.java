@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Controller
 @RequestMapping("/")
 @SessionAttributes("filter")
-public class BooksController {
+public class BookController {
 
     private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
 
@@ -24,7 +24,7 @@ public class BooksController {
     private final ClientService clientService;
 
     @Autowired
-    public BooksController(BookService bookService, ClientService clientService) {
+    public BookController(BookService bookService, ClientService clientService) {
         this.bookService = bookService;
         this.clientService = clientService;
     }
