@@ -11,14 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 @Controller
-@RequestMapping("/")
 @SessionAttributes("filter")
 public class BookController {
-
-    private static final LocalDateTime MONTH_AGO = LocalDateTime.now().minusMonths(1);
 
     private final BookService bookService;
 
@@ -33,13 +28,6 @@ public class BookController {
     @ModelAttribute("filter")
     public BookFilterRequest getRequest() {
         return new BookFilterRequest();
-    }
-
-    @RequestMapping("/")
-    public String findBestOfFourPerMonth(Model model) {
-        model.addAttribute("books", bookService.findBestBooksByPeriod(MONTH_AGO, 4));
-        model.addAttribute("bookAmountDuringIndep", bookService.findReleasedDuringIndependence());
-        return "index";
     }
 
 

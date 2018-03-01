@@ -1,52 +1,39 @@
 package com.library.admin.controller;
 
-import com.library.model.request.ClientRequest;
+import com.library.entity.Book;
+import com.library.entity.Client;
+import com.library.model.view.ClientView;
 import com.library.service.ClientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
-@SessionAttributes("newClientComponent")
 public class AdminClientController {
 
     private final ClientService clientService;
 
-    @Autowired
     public AdminClientController(ClientService clientService) {
         this.clientService = clientService;
     }
 
-    @GetMapping("/signin")
-    public String getSingInPage(Model model) {
-        return "signIn";
+    @GetMapping("/clients")
+    public String clientStatistic(Model model) {
+        List<Client> clients = clientService.findAll();
+        List<ClientView> clientViews = new ArrayList<>();
+        if (!clients.isEmpty()) {
+            for (Client client : clients) {
+                Integer usingLibraryDaysCount = clientService.getUsingLibraryDaysCount(client.getId());
+                List<Book> notReturnedBooks = clientService.findNotReturnedBooks(client.getId());
+                clientViews.add(new ClientView(client, usingLibraryDaysCount, notReturnedBooks));
+            }
+        } else {
+            return "index"; // TODO Create adminMenu.jsp
+        }
+        model.addAttribute("clientViews", new ArrayList<>());
+        return "clients";
     }
-
-    @GetMapping("/adminClient")
-    public String getRegistrationPage(Model model) {
-        return "adminClient";
-    }
-
-    @ModelAttribute("newClientComponent")
-    public ClientRequest getForm() {
-        return new ClientRequest();
-    }
-
-    @PostMapping("/adminClient")
-    public String save(@ModelAttribute("newClientComponent") ClientRequest request, SessionStatus status) {
-        clientService.save(request);
-        return cancel(status);
-    }
-
-    @GetMapping("/adminClient")
-    public String cancel(SessionStatus status) {
-        status.setComplete();
-        return "redirect:/adminClient";
-    }
-
 }
