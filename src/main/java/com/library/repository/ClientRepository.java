@@ -56,7 +56,12 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
      */
     Double findAverageAgeByAuthor(int authorId);
 
-    public List<Integer> getAllClientsId();
+    /**
+     * No task. Returns age based on birth date.
+     */
+    Integer getAge(int clientId);
+
+    List<Integer> getAllClientsId();
 
 }
 

@@ -1,8 +1,8 @@
 package com.library.service.impl;
 
 import com.library.entity.Book;
-import com.library.entity.builder.ClassBuider;
 import com.library.entity.Client;
+import com.library.entity.builder.ClassBuider;
 import com.library.entity.builder.clientbuilder.RegisteredClient;
 import com.library.model.request.ClientRequest;
 import com.library.repository.ClientRepository;
@@ -69,6 +69,11 @@ public class ClientServiceImpl extends CrudServiceImpl<Client, Integer, ClientRe
     @Override
     public Double findAverageAgeByAuthor(int authorId) {
         return getRepository().findAverageAgeByAuthor(authorId);
+    }
+
+    @Override
+    public Integer getAge(int clientId) {
+        return getRepository().getAge(clientId);
     }
 
     @Override

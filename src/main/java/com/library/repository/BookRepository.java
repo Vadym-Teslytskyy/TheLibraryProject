@@ -1,7 +1,6 @@
 package com.library.repository;
 
 import com.library.entity.Book;
-import com.library.model.view.BookIndexView;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -70,5 +69,5 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     Book findBookByName(String bookName);
     // TODO Тут потрібно повертати не Book, а щось типу BookAvailabilityView, котррий містить bookName, generalCount, availableCount
 
-    List<BookIndexView> findAllAvailableBookIndexViews();
+//    List<BookIndexView> findAllAvailableBookIndexViews();
 }

@@ -1,7 +1,6 @@
 package com.library.repository.impl;
 
 import com.library.entity.Book;
-import com.library.model.view.BookIndexView;
 import com.library.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
@@ -158,12 +157,12 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer>
         query.setParameter(1, bookName);
         return query.getSingleResult();
     }
-    @Override
-    public List<BookIndexView> findAllAvailableBookIndexViews() {
-        String sqlQuery = "SELECT new com.library.model.view.BookIndexView"
-                +"( b.id, b.name, a.firstName, a.lastName, g.genreName, b.photoUrl, b.availableCount) "
-                    +"FROM Book b JOIN b.genre g JOIN b.mainAuthor a WHERE (b.id = ?1 and b.availableCount > 0)";
-        TypedQuery<BookIndexView> query = getEntityManager().createQuery(sqlQuery, BookIndexView.class);
-        return query.getResultList();
-    }
+//    @Override
+//    public List<BookIndexView> findAllAvailableBookIndexViews() {
+//        String sqlQuery = "SELECT new com.library.model.view.BookIndexView"
+//                +"( b.id, b.name, a.firstName, a.lastName, g.genreName, b.photoUrl, b.availableCount) "
+//                    +"FROM Book b JOIN b.genre g JOIN b.mainAuthor a WHERE (b.id = ?1 and b.availableCount > 0)";
+//        TypedQuery<BookIndexView> query = getEntityManager().createQuery(sqlQuery, BookIndexView.class);
+//        return query.getResultList();
+//    }
 }
