@@ -1,8 +1,8 @@
 package com.library.service.impl;
 
 import com.library.entity.Book;
-import com.library.entity.bookbuilder.BookBuider;
-import com.library.entity.bookbuilder.RegisteredBook;
+import com.library.entity.buider.bookbuilder.BookBuilder;
+import com.library.entity.buider.bookbuilder.RegisteredBook;
 import com.library.model.filter.BookFilter;
 import com.library.model.request.BookRequest;
 import com.library.repository.BookRepository;
@@ -105,9 +105,9 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Integer, BookReposito
     @Override
     @Transactional
     public void save(BookRequest bookRequest) {
-        BookBuider bookBuider = new RegisteredBook(bookRequest);
-        bookBuider.buildBook();
-        getRepository().save(bookBuider.getBook());
+        BookBuilder bookBuilder = new RegisteredBook(bookRequest);
+//        bookBuilder.buildBook();
+//        getRepository().save(bookBuilder.getBook());
     }
 
     @Override
