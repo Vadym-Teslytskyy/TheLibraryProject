@@ -32,5 +32,8 @@
     <definition name="authorFilter" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/authorFilter.jsp"/>
     </definition>
+    <definition name="contact" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/contact.jsp"/>
+    </definition>
 
 </tiles-definitions>
