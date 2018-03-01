@@ -1,23 +1,24 @@
-package com.library.controller;
+package com.library.admin.controller;
 
 import com.library.model.request.ClientRequest;
 import com.library.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import java.util.List;
 
 @Controller
 @SessionAttributes("newClientComponent")
-public class ClientRegistrationController {
+public class AdminClientController {
 
     private final ClientService clientService;
 
     @Autowired
-    public ClientRegistrationController(ClientService clientService) {
+    public AdminClientController(ClientService clientService) {
         this.clientService = clientService;
     }
 

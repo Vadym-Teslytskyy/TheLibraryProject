@@ -1,4 +1,4 @@
-package com.library.controller;
+package com.library.admin.controller;
 
 import com.library.entity.Genre;
 import com.library.service.GenreService;
@@ -7,14 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-public class GenreRegistrationController {
+public class AdminGenreController {
 
     private final GenreService genreService;
 
-    public GenreRegistrationController(GenreService genreService) {
+    public AdminGenreController(GenreService genreService) {
         this.genreService = genreService;
     }
 

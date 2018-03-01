@@ -1,7 +1,6 @@
-package com.library.controller;
+package com.library.admin.controller;
 
 import com.library.model.request.AuthorRequest;
-import com.library.model.request.BookRequest;
 import com.library.service.AuthorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +12,11 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("newAuthorComponent")
-public class AuthorRegistrationController {
+public class AdminAuthorController {
 
     private final AuthorService authorService;
 
-    public AuthorRegistrationController(AuthorService authorService) {
+    public AdminAuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
