@@ -20,6 +20,9 @@
     <definition name="bookRegistration" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/bookRegistration.jsp"/>
     </definition>
+    <definition name="authorRegistration" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/authorRegistration.jsp"/>
+    </definition>
     <definition name="genreRegistration" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/genreRegistration.jsp"/>
     </definition>
