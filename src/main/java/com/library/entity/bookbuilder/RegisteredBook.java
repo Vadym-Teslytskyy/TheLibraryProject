@@ -16,18 +16,17 @@ public class RegisteredBook extends BookBuider {
 
     @Override
     public void buildBook() {
+        Genre genre = new Genre();
+        genre.setGenreName(bookRequest.getGenre());
+        book.setGenre(genre);
+
+        Author mainAuthor = new Author();
+        mainAuthor.setFirstName(bookRequest.getMainAuthorFirstName());
+        mainAuthor.setLastName(bookRequest.getMainAuthorLastName());
+        book.setMainAuthor(mainAuthor);
+
         createNewBook();
         book.setName(bookRequest.getName());
-
-//        Author mainAuthor = new Author();
-//        mainAuthor.setFirstName(bookRequest.getMainAuthorFirstName());
-//        mainAuthor.setLastName(bookRequest.getMainAuthorLastName());
-//        book.setMainAuthor(mainAuthor);
-
-//        Genre genre = new Genre();
-//        genre.setGenreName(bookRequest.getGenre());
-//        book.setGenre(genre);
-
         book.setPhotoUrl(bookRequest.getPhotoUrl());
         book.setGeneralCount(bookRequest.getGeneralCount());
         book.setAvailableCount(bookRequest.getGeneralCount());
