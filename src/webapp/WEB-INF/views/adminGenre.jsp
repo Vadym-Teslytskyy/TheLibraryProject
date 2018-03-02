@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header id="head" class="secondary"></header>
 <!-- container -->
@@ -41,7 +42,29 @@
 
         </article>
         <!-- /Article -->
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr class="text-center">
+                <th>Nom.</th>
+                <th>Genre</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <c:forEach items="${genres}" var="author">
+            <tr>
+                <td>${author.id}</td>
+                <td>${author.genreName}</td>
+                <td>
+                    <a href="/admin/genre/updating/"${author.id} class="btn btn-outline-warning btn-sm">update</a>
+                </td>
+                <td><a href="/admin/genre/delete/"${author.id} class="btn btn-outline-warning btn-sm">delete</a></td>
 
+            </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 
     </div>
 </div>
