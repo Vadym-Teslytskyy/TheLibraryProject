@@ -15,7 +15,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="thin text-center">Sign in to your account</h3>
-                        <p class="text-center text-muted">If you don`t have any account, please <a href="/clientRegistration">Register</a>. If your account already exist sing in.</p>
+                        <p class="text-center text-muted">If you don`t have any account, please <a href="/registration">Register</a>. If your account already exist sing in.</p>
                         <hr>
 
                         <form>

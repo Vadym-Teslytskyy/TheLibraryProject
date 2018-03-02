@@ -33,11 +33,6 @@ public class AdminBookController {
         return new BookRequest();
     }
 
-    @RequestMapping("/contact")
-    public String showContactPage(Model model) {
-        return "contact";
-    }
-
     @PostMapping("/adminBook")
     public String save(@ModelAttribute("newBookComponent") BookRequest request, SessionStatus status) {
         bookService.save(request);
