@@ -5,19 +5,17 @@ import com.library.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("newClientComponent")
+@RequestMapping("/registration")
 public class RegistrationController {
 
     private final ClientService clientService;
 
-    @GetMapping("/registration")
+    @GetMapping
     public String showRegistration(Model model){
         return "registration";
     }
@@ -32,13 +30,13 @@ public class RegistrationController {
         return new ClientRequest();
     }
 
-    @PostMapping("/registration")
+    @PostMapping
     public String save(@ModelAttribute("newClientComponent") ClientRequest request, SessionStatus status) {
         clientService.save(request);
         return cancel(status);
     }
 
-    @GetMapping
+    @GetMapping("/cancel")
     public String cancel(SessionStatus status) {
         status.setComplete();
         return "redirect:/signin";
