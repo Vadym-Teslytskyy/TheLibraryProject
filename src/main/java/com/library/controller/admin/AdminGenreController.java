@@ -24,11 +24,11 @@ public class AdminGenreController {
         return "adminGenre";
     }
 
-    @PostMapping("/admin/genre")
+    @PostMapping("/admin/genre/save")
     public String save(@RequestParam String genreName) {
         Genre genre = new Genre();
         genre.setGenreName(genreName);
         genreService.save(genre);
-        return "redirect:/adminGenre";
+        return "redirect:/admin/genre";
     }
 }
