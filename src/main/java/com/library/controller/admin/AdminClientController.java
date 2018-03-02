@@ -1,4 +1,4 @@
-package com.library.admin.controller;
+package com.library.controller.admin;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
