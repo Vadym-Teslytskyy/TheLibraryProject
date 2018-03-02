@@ -51,11 +51,18 @@
                             <h5 style="color:black">
                                 <p>Author: ${book.mainAuthor.firstName} ${book.mainAuthor.lastName}</p>
                                 <p>Genre: ${book.genre.genreName}</p>
-                                <p>
-                                    <c:if test="${book.availableCount > 0}">
-                                        ${book.availableCount} books are available
-                                    </c:if>
-                                </p>
+                                <c:choose>
+                                    <c:when test="${book.availableCount > 0}">
+                                        <button type="button" class="btn btn-sm btn-success" disabled>
+                                            Is available
+                                        </button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button type="button" class="btn btn-sm btn-secondary" disabled>
+                                            Not available
+                                        </button>
+                                    </c:otherwise>
+                                </c:choose>
                             </h5>
                         </div>
                     </div>
