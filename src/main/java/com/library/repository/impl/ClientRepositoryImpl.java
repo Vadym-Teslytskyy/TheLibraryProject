@@ -101,7 +101,7 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
                 + "WHERE rent.user_id = client.id "
                 + "AND rent.borrowing_time BETWEEN ?1 AND ?2 "
                 + "GROUP BY client.id) AS temp_table";
-        Query nativeQuery = getEntityManager().createNativeQuery(sql, BigDecimal.class);
+        Query nativeQuery = getEntityManager().createNativeQuery(sql);
         nativeQuery.setParameter(1, fromTime);
         nativeQuery.setParameter(2, toTime);
         return (BigDecimal) nativeQuery.getSingleResult();

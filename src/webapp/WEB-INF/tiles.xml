@@ -29,6 +29,9 @@
     <definition name="clients" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/clients.jsp"/>
     </definition>
+    <definition name="clientsStatistic" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/clientsStatistic.jsp"/>
+    </definition>
     <definition name="bookView" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/views/bookView.jsp"/>
     </definition>
