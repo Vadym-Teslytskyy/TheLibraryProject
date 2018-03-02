@@ -23,10 +23,24 @@
         <!-- Article main content -->
         <article class="col-md-8 maincontent">
             <header class="page-header">
-                <h1 class="page-title page-header">${bookView.name}</h1>
-                <c:if test="${bookView.availableCount > 0}">
-                    ${bookView.availableCount} books are available
-                </c:if>
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="page-title page-header">${bookView.name}</h1>
+                    </div>
+                    <c:choose>
+                        <c:when test="${bookView.availableCount > 0}">
+                            <button type="button" class="btn btn-md btn-success pull-right" disabled>
+                                Is available
+                            </button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" class="btn btn-md btn-secondary pull-right" disabled>
+                                Not available
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+
                 <h4 class="page-title">Author:
                     <a href="/author/${bookView.authorId}">
                         ${bookView.authorFirstName} ${bookView.authorLastName}

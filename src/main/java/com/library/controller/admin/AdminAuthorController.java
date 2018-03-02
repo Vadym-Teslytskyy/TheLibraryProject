@@ -5,10 +5,7 @@ import com.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
@@ -24,6 +21,7 @@ public class AdminAuthorController {
 
     @GetMapping("/admin/author")
     public String getAuthorAdminPage(Model model) {
+        model.addAttribute("authors", authorService.findAll());
         return "adminAuthor";
     }
 
@@ -32,9 +30,27 @@ public class AdminAuthorController {
         return new AuthorRequest();
     }
 
-    @PostMapping("/admin/author")
+    @PostMapping("/admin/author/save")
     public String save(@ModelAttribute("newAuthorComponent") AuthorRequest request, SessionStatus status) {
         authorService.save(request);
-        return "redirect:/adminAuthor";
+        return cancel(status);
+    }
+
+    @GetMapping("/cencelAuthorFields")
+    public String cancel(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/admin/author";
+    }
+
+    @RequestMapping("/admin/author/delete/{id}")
+    public String delete(@PathVariable int id) {
+        authorService.delete(id);
+        return "redirect:/admin/author";
+    }
+
+    @RequestMapping("/admin/author/updating/{id}")
+    public String updating(@PathVariable int id, Model model) {
+        model.addAttribute("author", authorService.find(id));
+        return "redirect:/admin/author";
     }
 }

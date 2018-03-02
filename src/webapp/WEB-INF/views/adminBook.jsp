@@ -27,7 +27,7 @@
 
                         <hr>
 
-                        <form:form action="/bookRegistration" method="POST" modelAttribute="newBookComponent">
+                        <form:form action="/admin/book/save" method="POST" modelAttribute="newBookComponent">
                             <div class="top-margin">
                                 <label>Book Title</label>
                                 <form:input type="text" id="name" placeholder="Book Title" class="form-control"
