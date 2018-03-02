@@ -47,7 +47,7 @@ public class ClientRepositoryImpl extends CrudRepositoryImpl<Client, Integer>
      */
     @Override
     public Integer getUsingLibraryDaysCount(int clientId) {
-        String sql = "SELECT DATEDIFF (client.registrationDate, NOW()) "
+        String sql = "SELECT DATEDIFF (NOW(), client.registrationDate) "
                 + "FROM Client client WHERE client.id = ?1";
         TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
         query.setParameter(1, clientId);

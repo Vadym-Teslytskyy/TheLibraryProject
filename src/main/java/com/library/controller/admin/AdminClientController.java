@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -26,8 +28,15 @@ public class AdminClientController {
     }
 
     @GetMapping("/clients")
-    public String showClients(Model model) {
-        List<Client> clients = clientService.findAll();
+    public String showClients(Model model, @RequestParam String type) {
+        List<Client> clients;
+        if (type.equals("all")) {
+            clients = clientService.findAll();
+        } else if (type.equals("debtors")) {
+            clients = clientService.findDebtors();
+        } else {
+            clients = Collections.emptyList();
+        }
         List<ClientView> clientViews = new ArrayList<>();
         if (!clients.isEmpty()) {
             for (Client client : clients) {
@@ -35,10 +44,8 @@ public class AdminClientController {
                 List<Book> notReturnedBooks = clientService.findNotReturnedBooks(client.getId());
                 clientViews.add(new ClientView(client, usingLibraryDaysCount, notReturnedBooks));
             }
-        } else {
-            return "index"; // TODO Create adminMenu.jsp
         }
-        model.addAttribute("clientViews", new ArrayList<>());
+        model.addAttribute("clientViews", clientViews);
         return "clients";
     }
 

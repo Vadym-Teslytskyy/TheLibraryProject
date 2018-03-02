@@ -4,13 +4,12 @@
 <table class="table">
     <thead class="thead-inverse">
     <tr class="text-center">
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Home address</th>
-        <th>Age</th>
-        <th>Time of library using (days)</th>
-        <th>Borrowing books</th>
-        <th>Not returned books</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Phone</th>
+        <th class="text-center">Home address</th>
+        <th class="text-center">Time of library using (days)</th>
+        <th class="text-center">Read books</th>
+        <th class="text-center">Not returned books</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +19,16 @@
             <td class="text-center">${client.phoneNumber}</td>
             <td class="text-center">${client.homeAddress}</td>
             <td class="text-center">${client.usingLibraryDaysCount}</td>
+            <td class="text-center">
+                <c:forEach var="book" items="${client.readBooks}">
+                    <a href="/book/${book.id}">${book.name}, </a>
+                </c:forEach>
+            </td>
+            <td class="text-center">
+                <c:forEach var="book" items="${client.notReturnedBooks}">
+                    <a href="/book/${book.id}">${book.name}, </a>
+                </c:forEach>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
