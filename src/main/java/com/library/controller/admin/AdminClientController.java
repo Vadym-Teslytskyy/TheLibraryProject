@@ -1,9 +1,10 @@
-package com.library.admin.controller;
+package com.library.controller.admin;
 
 import com.library.entity.Book;
 import com.library.entity.Client;
 import com.library.model.view.ClientView;
 import com.library.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ public class AdminClientController {
 
     private final ClientService clientService;
 
+    @Autowired
     public AdminClientController(ClientService clientService) {
         this.clientService = clientService;
     }

@@ -1,7 +1,8 @@
-package com.library.admin.controller;
+package com.library.controller.admin;
 
 import com.library.model.request.AuthorRequest;
 import com.library.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,13 @@ public class AdminAuthorController {
 
     private final AuthorService authorService;
 
+    @Autowired
     public AdminAuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
-    @GetMapping("/adminAuthor")
-    public String getRegistrationPage(Model model) {
+    @GetMapping("/admin/author")
+    public String getAuthorAdminPage(Model model) {
         return "adminAuthor";
     }
 
@@ -30,7 +32,7 @@ public class AdminAuthorController {
         return new AuthorRequest();
     }
 
-    @PostMapping("/adminAuthor")
+    @PostMapping("/admin/author")
     public String save(@ModelAttribute("newAuthorComponent") AuthorRequest request, SessionStatus status) {
         authorService.save(request);
         return "redirect:/adminAuthor";
