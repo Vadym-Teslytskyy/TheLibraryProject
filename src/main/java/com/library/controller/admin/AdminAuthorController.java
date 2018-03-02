@@ -32,9 +32,15 @@ public class AdminAuthorController {
         return new AuthorRequest();
     }
 
-    @PostMapping("/admin/author")
+    @PostMapping("/admin/author/save")
     public String save(@ModelAttribute("newAuthorComponent") AuthorRequest request, SessionStatus status) {
         authorService.save(request);
-        return "redirect:/adminAuthor";
+        return cancel(status);
+    }
+
+    @GetMapping("/cencelAuthorFields")
+    public String cancel(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/admin/author";
     }
 }

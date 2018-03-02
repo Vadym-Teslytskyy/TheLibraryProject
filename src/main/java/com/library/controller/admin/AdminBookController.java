@@ -25,27 +25,22 @@ public class AdminBookController {
         this.authorService = authorService;
     }
 
-    //    @GetMapping("/bookRegistration")
-//    public String getRegistrationPage(Model model) {
-//        return "bookRegistration";
-//    }
-
     @ModelAttribute("newBookComponent")
     public BookRequest getForm() {
         return new BookRequest();
     }
 
-    @PostMapping("/admin/book")
+    @PostMapping("/admin/book/save")
     public String save(@ModelAttribute("newBookComponent") BookRequest request, SessionStatus status) {
         bookService.save(request);
-        return "redirect:/admin/book";
+        return cancel(status);
     }
 
-//    @GetMapping("/cleanBookFields")
-//    public String cancel(SessionStatus status) {
-//        status.setComplete();
-//        return "redirect:/bookRegistration";
-//    }
+    @GetMapping("/cencelBookFields")
+    public String cancel(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/admin/book";
+    }
 
     @GetMapping("/admin/book")
     public String getRegistrationPage1(Model model) {

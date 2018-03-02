@@ -19,7 +19,7 @@
                                 href="/signin">Login</a> Else please enter the fields below. </p>
                         <hr>
 
-                        <form action="/genreRegistration" method="POST">
+                        <form action="/admin/genre/save" method="POST">
                             <div class="top-margin">
                                 <label>Genre</label>
                                 <input type="text" id="genreName" placeholder="Genre" class="form-control"

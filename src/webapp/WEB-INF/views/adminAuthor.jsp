@@ -26,7 +26,7 @@
 
                         <hr>
 
-                        <form:form action="/authorRegistration" method="POST" modelAttribute="newAuthorComponent">
+                        <form:form action="/admin/author/save" method="POST" modelAttribute="newAuthorComponent">
                             <div class="top-margin">
                                 <label>Author First Name</label>
                                 <form:input type="text" id="firstName" placeholder="Author First Name" class="form-control"
