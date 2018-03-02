@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header id="head" class="secondary"></header>
 <!-- container -->
@@ -29,7 +30,8 @@
                         <form:form action="/admin/author/save" method="POST" modelAttribute="newAuthorComponent">
                             <div class="top-margin">
                                 <label>Author First Name</label>
-                                <form:input type="text" id="firstName" placeholder="Author First Name" class="form-control"
+                                <form:input type="text" id="firstName" placeholder="Author First Name"
+                                            class="form-control"
                                             path="firstName"/>
                             </div>
                             <div class="top-margin">
@@ -72,6 +74,36 @@
 
         </article>
         <!-- /Article -->
+
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr class="text-center">
+                <th>Nom.</th>
+                <th>Firs Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <c:forEach items="${authors}" var="author">
+            <tr>
+                <td>${author.id}</td>
+                <td>${author.firstName}</td>
+                <td>${author.lastName}</td>
+                <td>${author.birthDate}</td>
+                <td>${author.country}</td>
+                <td>
+                    <a href="admin/author/updating/"${author.id} class="btn btn-outline-warning btn-sm">update</a>
+                </td>
+                <td><a href="admin/author/delete/"${author.id} class="btn btn-outline-warning btn-sm">delete</a></td>
+
+            </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 
     </div>
 </div>
