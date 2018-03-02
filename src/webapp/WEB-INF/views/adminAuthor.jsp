@@ -96,9 +96,9 @@
                 <td>${author.birthDate}</td>
                 <td>${author.country}</td>
                 <td>
-                    <a href="author/updating/"${author.id} class="btn btn-outline-warning btn-sm">update</a>
+                    <a href="author/updating/${author.id}" class="btn btn-outline-warning btn-sm">update</a>
                 </td>
-                <td><a href="author/delete/"${author.id} class="btn btn-outline-warning btn-sm">delete</a></td>
+                <td><a href="author/delete/${author.id}" class="btn btn-outline-warning btn-sm">delete</a></td>
 
             </tr>
             </c:forEach>

@@ -57,9 +57,9 @@
                 <td>${author.id}</td>
                 <td>${author.genreName}</td>
                 <td>
-                    <a href="/admin/genre/updating/"${author.id} class="btn btn-outline-warning btn-sm">update</a>
+                    <a href="/admin/genre/updating/${author.id}" class="btn btn-outline-warning btn-sm">update</a>
                 </td>
-                <td><a href="/admin/genre/delete/"${author.id} class="btn btn-outline-warning btn-sm">delete</a></td>
+                <td><a href="/admin/genre/delete/${author.id}" class="btn btn-outline-warning btn-sm">delete</a></td>
 
             </tr>
             </c:forEach>
